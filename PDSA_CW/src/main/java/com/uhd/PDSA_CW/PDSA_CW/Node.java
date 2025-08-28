@@ -1,11 +1,17 @@
 package com.uhd.PDSA_CW.PDSA_CW;
 
+import java.util.Date;
+
 public class Node {
-    int data;
+    String itemName;
+    int itemquantity;
+    Date itemExpDate;
     Node nextNode;
 
-    public Node(int value){
-        data = value;
+    public Node(String name, int quantity, Date expDate){
+        itemName = name;
+        itemquantity = quantity;
+        itemExpDate = expDate;
         nextNode = null;
     }
 }
