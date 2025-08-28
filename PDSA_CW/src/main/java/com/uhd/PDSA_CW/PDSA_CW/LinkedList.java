@@ -5,6 +5,28 @@ import java.util.Date;
 public class LinkedList {
     Node head;
 
+    public void insertByDate(String name, int quantity, Date expDate) {
+        Node node = new Node(name, quantity, expDate);
+
+        // Case 1: Empty list or new node expires before head
+        if (head == null || head.itemExpDate.compareTo(expDate) > 0) {
+            node.nextNode = head;
+            head = node;
+            return;
+        }
+
+        // Case 2: Traverse to find correct position
+        Node currentNode = head;
+        while (currentNode.nextNode != null && currentNode.nextNode.itemExpDate.compareTo(expDate) <= 0) {
+            currentNode = currentNode.nextNode;
+        }
+
+        node.nextNode = currentNode.nextNode;
+        currentNode.nextNode = node;
+    }
+
+
+
     public void insertBeg(String name, int quantity, Date expDate){
         if(head==null){
             head = new Node(name,quantity,expDate);
@@ -31,7 +53,7 @@ public class LinkedList {
     public void displayValues(){
         Node node = head;
         while(node!=null){
-            System.out.println("Item: " + node.itemName + ", Quantity: " + node.itemquantity + " ,Exp-Date:"+ node.itemExpDate);
+            System.out.println("Item: " + node.itemName + ", Quantity: " + node.itemQuantity + " ,Exp-Date:"+ node.itemExpDate);
             node = node.nextNode;
         }
     }

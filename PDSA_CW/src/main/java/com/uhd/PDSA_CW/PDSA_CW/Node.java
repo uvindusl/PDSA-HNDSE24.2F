@@ -4,13 +4,13 @@ import java.util.Date;
 
 public class Node {
     String itemName;
-    int itemquantity;
+    int itemQuantity;
     Date itemExpDate;
     Node nextNode;
 
     public Node(String name, int quantity, Date expDate){
         itemName = name;
-        itemquantity = quantity;
+        itemQuantity = quantity;
         itemExpDate = expDate;
         nextNode = null;
     }
