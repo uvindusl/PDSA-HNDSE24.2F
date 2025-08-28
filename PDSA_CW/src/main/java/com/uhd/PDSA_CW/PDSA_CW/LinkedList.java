@@ -31,7 +31,7 @@ public class LinkedList {
     public void displayValues(){
         Node node = head;
         while(node!=null){
-            System.out.println("Item: " + node.itemName + ", Quantity: " + node.itemquantity + " ,Exp-Date:"+ node.itemExpDate);
+            System.out.println("Item: " + node.itemName + ", Quantity: " + node.itemQuantity + " ,Exp-Date:"+ node.itemExpDate);
             node = node.nextNode;
         }
     }

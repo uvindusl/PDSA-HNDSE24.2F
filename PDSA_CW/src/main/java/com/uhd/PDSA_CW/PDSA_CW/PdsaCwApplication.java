@@ -23,9 +23,9 @@ public class PdsaCwApplication {
 //		list1.insertBeg(10);
 //		list1.insertBeg(20);
 //		list1.insertBeg(30);
-		list1.insertEnd("Milk", 12, toDate(2034, 4, 4));
-        list1.insertEnd("Gaslabu",23,toDate(2067, 8, 9));
-        list1.insertEnd("apple",45,toDate(2034, 4, 4));
+//		list1.insertEnd("Milk", 12, toDate(2034, 4, 4));
+//        list1.insertEnd("Gaslabu",23,toDate(2067, 8, 9));
+//        list1.insertEnd("apple",45,toDate(2034, 4, 4));
 //        list1.insertMiddle(list1.head,100);
 //        list1.insertMiddle(list1.head.nextNode,100);
 //        list1.displayValues();
