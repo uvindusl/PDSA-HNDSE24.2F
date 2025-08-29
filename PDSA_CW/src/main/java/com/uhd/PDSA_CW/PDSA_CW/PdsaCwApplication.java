@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 
 @SpringBootApplication
@@ -27,14 +28,39 @@ public class PdsaCwApplication {
 //        list1.insertEnd("Gaslabu",23,toDate(2067, 8, 9));
 //        list1.insertEnd("apple",45,toDate(2034, 4, 4));
 		list1.insertByDate("Milk", 10, toDate(2090, 4, 4));
-		list1.insertByDate("orange",93,toDate(2070, 8, 9));
-		list1.insertByDate("apple",5,toDate(2000, 4, 1));
+		list1.insertByDate("Gaslabu",93,toDate(2070, 8, 9));
+		list1.insertByDate("apple",5,toDate(2025, 8, 30));
 //        list1.insertMiddle(list1.head,100);
 //        list1.insertMiddle(list1.head.nextNode,100);
 //        list1.displayValues();
 //        list1.deleteEnd();
 //		list1.deleteMiddle(list1.head.nextNode);
 		list1.displayValues();
+		
+		checkCloseToExpire(list1);
+	}
+
+	public static void checkCloseToExpire(LinkedList list){
+		Node current = list.head;
+		Date today = new Date();
+		
+		while (current != null) {
+			if (current.itemExpDate.after(today)) {
+				// convert date into miliseconds
+				long milliseconds = current.itemExpDate.getTime() - today.getTime();
+				// convert milliseconds into days
+				long millToDays = TimeUnit.DAYS.convert(milliseconds, TimeUnit.MILLISECONDS);
+			
+			
+				// checking item is expier in 10 dates
+				if (millToDays <= 10) {
+					System.out.println(current.itemName + " is expiring in " + millToDays + 1 + " days.");
+				}
+			}
+
+			current = current.nextNode;
+		}
+		System.out.println("Finished checking expiry dates");
 
 	}
 
