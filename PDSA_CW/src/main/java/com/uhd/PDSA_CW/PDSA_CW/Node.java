@@ -14,4 +14,14 @@ public class Node {
         itemExpDate = expDate;
         nextNode = null;
     }
+
+    public String getItemName() {
+        return itemName;
+    }
+    public Date getItemExpDate() {
+        return itemExpDate;
+    }
+    public Node getNextNode() {
+        return nextNode;
+    }
 }
