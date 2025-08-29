@@ -31,9 +31,9 @@ public class PdsaCwApplication {
 		list1.insertByDate("apple",5,toDate(2000, 4, 1));
 //        list1.insertMiddle(list1.head,100);
 //        list1.insertMiddle(list1.head.nextNode,100);
-//        list1.displayValues();
+        list1.displayValues();
 //        list1.deleteEnd();
-//		list1.deleteMiddle(list1.head.nextNode);
+		list1.deleteMiddle(list1.head.nextNode);
 		list1.displayValues();
 
 	}
