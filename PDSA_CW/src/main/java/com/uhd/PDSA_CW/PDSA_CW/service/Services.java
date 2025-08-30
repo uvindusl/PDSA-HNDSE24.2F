@@ -25,8 +25,12 @@ public class Services {
 
 
 
-        addItemToGroceryList("milk");
-        addItemToGroceryList("nice");
+
+        
+
+        addItemToGroceryList("milk", 2);
+        addItemToGroceryList("nice", 3);
+
         queue.display();
     }
 
@@ -58,18 +62,32 @@ public class Services {
         return getCloseToExpireItems(list1);
     }
 
-    public void addItemToGroceryList(String item) {
-        queue.enqueue(item);
+    public void addItemToGroceryList(String item, int qty) {
+        GroceryItem groceryItem = new GroceryItem(item, qty);
+        queue.enqueue(groceryItem);
+    }
+
+    public List<String> displayPantryList() {
+        List<String> items = new ArrayList<>();
+        Node node = list1.head;
+        while(node!=null){
+            items.add("Item: " + node.itemName + ", Quantity: " + node.itemQuantity + " ,Exp-Date:"+ node.itemExpDate);
+            node = node.nextNode;
+        }
+
+        return items;
     }
 
     public List<String> displayGrocery() {
         List<String> items = new ArrayList<>();
         for(int i = queue.front+1;i<= queue.rear;i++){
-            items.add(queue.x[i]);
+            GroceryItem item = queue.x[i];
+            items.add("Item: " + item.getName() + ", Quantity: " + Integer.toString(item.getQty()));
         }
 
         return items;
     }
+
     public String removeExpiredItems(LinkedList list) {
 
         Node current = list.head;
@@ -99,4 +117,12 @@ public class Services {
     public String removeExpiredItemsHandler() {
         return removeExpiredItems(list1);
     }
+
+
+    public Node insertByDate(Node node) {
+        list1.insertByDate(node.getItemName(), node.getItemQuantity(), node.getItemExpDate());
+        return node;
+    }
+
+
 }
