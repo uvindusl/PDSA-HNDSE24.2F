@@ -4,12 +4,14 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Title from "./components/Title";
 import StatesBar from "./components/StatesBar";
+import TabView from "./components/TabView";
 
 function App() {
   return (
     <>
       <Title />
       <StatesBar />
+      <TabView />
     </>
   );
 }
