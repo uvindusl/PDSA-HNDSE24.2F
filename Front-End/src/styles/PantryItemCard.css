@@ -1,0 +1,6 @@
+.pantry-item-card {
+  border: solid black 1px;
+  display: flex;
+  justify-content: space-around;
+  margin: 2px;
+}

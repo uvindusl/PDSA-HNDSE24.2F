@@ -18,5 +18,9 @@ public class controller {
     public List<String> getItemsCloseToExpire() {
         return services.getItemsCloseToExpire();
     }
-    
+
+    @GetMapping("/grocerylists")
+    public List<String> displayGroceryList(){
+        return services.displayGrocery();
+    }
 }

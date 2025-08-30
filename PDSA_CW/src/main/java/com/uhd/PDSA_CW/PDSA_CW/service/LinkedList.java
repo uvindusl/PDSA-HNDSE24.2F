@@ -1,9 +1,6 @@
 package com.uhd.PDSA_CW.PDSA_CW.service;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class LinkedList {
     Node head;
@@ -89,22 +86,4 @@ public class LinkedList {
         // this will delete the next value
     }
 
-    public List<String> getCloseToExpireItems() {
-        List<String> expiringItems = new ArrayList<>();
-        Node current = this.getHead();
-        Date today = new Date();
-
-        while (current != null) {
-            if (current.getItemExpDate().after(today)) {
-                long milliseconds = current.getItemExpDate().getTime() - today.getTime();
-                long daysToExpiry = TimeUnit.DAYS.convert(milliseconds, TimeUnit.MILLISECONDS);
-
-                if (daysToExpiry <= 10) {
-                    expiringItems.add(current.getItemName() + " is expiring in " + daysToExpiry + 1 + " days.");
-                }
-            }
-            current = current.getNextNode();
-        }
-        return expiringItems;
-    }
 }
