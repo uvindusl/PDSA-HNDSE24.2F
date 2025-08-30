@@ -67,4 +67,10 @@ public class Services {
 
         return items;
     }
+
+    public Node insertByDate(Node node) {
+        list1.insertByDate(node.getItemName(), node.getItemQuantity(), node.getItemExpDate());
+        return node;
+    }
+
 }
