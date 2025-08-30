@@ -3,6 +3,7 @@ import PantryManager from "./PantryManager";
 import RecipeSuggestions from "./RecipeSuggestions";
 import GroceryList from "./GroceryList";
 import { motion } from "framer-motion";
+import "../styles/TabView.css";
 
 const TabView = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -11,7 +12,7 @@ const TabView = () => {
   const content = [<PantryManager />, <RecipeSuggestions />, <GroceryList />];
 
   return (
-    <div>
+    <div className="tab-container">
       <div style={{ display: "flex", cursor: "pointer" }}>
         {tabs.map((tab, index) => (
           <div
