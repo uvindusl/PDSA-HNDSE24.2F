@@ -31,7 +31,7 @@ public class Services {
         return Date.from(LocalDate.of(year, month, day)
                 .atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
-
+  
     public List<String> getCloseToExpireItems(LinkedList list) {
         List<String> expiringItems = new ArrayList<>();
         Node current = list.head;
