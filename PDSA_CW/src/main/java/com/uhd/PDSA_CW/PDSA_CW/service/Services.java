@@ -18,10 +18,13 @@ public class Services {
     public Services() {
         this.list1 = new LinkedList();
         this.queue = new Queue();
-        list1.insertByDate("Milk", 10, toDate(2090, 4, 4));
-        list1.insertByDate("Gaslabu", 93, toDate(2070, 8, 9));
-        list1.insertByDate("apple", 5, toDate(2025, 8, 31));
+        list1.insertByDate("Milk", 10, toDate(2025, 9, 04));
+        list1.insertByDate("Gaslabu", 93, toDate(2025, 9, 05));
+        list1.insertByDate("apple", 5, toDate(2025, 8, 23));
         list1.displayValues();
+
+
+
         addItemToGroceryList("milk");
         addItemToGroceryList("nice");
         queue.display();
@@ -43,7 +46,7 @@ public class Services {
                 long daysToExpiry = TimeUnit.DAYS.convert(milliseconds, TimeUnit.MILLISECONDS);
 
                 if (daysToExpiry <= 10) {
-                    expiringItems.add(current.getItemName() + " is expiring in " + daysToExpiry + 1 + " days.");
+                    expiringItems.add(current.getItemName() + " is expiring in " + daysToExpiry+"days.");
                 }
             }
             current = current.getNextNode();
@@ -66,5 +69,34 @@ public class Services {
         }
 
         return items;
+    }
+    public String removeExpiredItems(LinkedList list) {
+
+        Node current = list.head;
+        Date today = new Date();
+
+
+        while (current != null) {
+            if (current.getItemExpDate().before(today)) {
+                list1.deleteBeg();
+                System.out.println("After deleting");
+
+                String itemName = current.getItemName();
+
+                return itemName + "   deleted";
+
+            }else{
+                System.out.println("no data deleted");
+            }
+            current = current.getNextNode();
+            return null;
+
+
+
+        }
+        return null;
+    }
+    public String removeExpiredItemsHandler() {
+        return removeExpiredItems(list1);
     }
 }
