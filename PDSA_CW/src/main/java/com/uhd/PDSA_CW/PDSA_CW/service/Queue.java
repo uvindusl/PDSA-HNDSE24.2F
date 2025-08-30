@@ -1,4 +1,4 @@
-package com.uhd.PDSA_CW.PDSA_CW;
+package com.uhd.PDSA_CW.PDSA_CW.service;
 
 public class Queue {
 
