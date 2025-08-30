@@ -13,13 +13,18 @@ import org.springframework.stereotype.Service;
 public class Services {
 
     private LinkedList list1;
+    private Queue queue;
 
     public Services() {
         this.list1 = new LinkedList();
+        this.queue = new Queue();
         list1.insertByDate("Milk", 10, toDate(2090, 4, 4));
         list1.insertByDate("Gaslabu", 93, toDate(2070, 8, 9));
         list1.insertByDate("apple", 5, toDate(2025, 8, 31));
         list1.displayValues();
+        addItemToGroceryList("milk");
+        addItemToGroceryList("nice");
+        queue.display();
     }
 
     public static Date toDate(int year, int month, int day) {
@@ -50,7 +55,16 @@ public class Services {
         return getCloseToExpireItems(list1);
     }
 
-    public void groceryList(String item) {
-        
+    public void addItemToGroceryList(String item) {
+        queue.enqueue(item);
+    }
+
+    public List<String> displayGrocery() {
+        List<String> items = new ArrayList<>();
+        for(int i = queue.front+1;i<= queue.rear;i++){
+            items.add(queue.x[i]);
+        }
+
+        return items;
     }
 }

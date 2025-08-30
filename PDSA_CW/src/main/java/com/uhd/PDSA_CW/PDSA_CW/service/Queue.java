@@ -3,9 +3,9 @@ package com.uhd.PDSA_CW.PDSA_CW.service;
 public class Queue {
 
     // Attributes
-    private String[] x;
-    private int front;
-    private int rear;
+    String[] x;
+    int front;
+    int rear;
 
     // Constructor
     public Queue () {
@@ -24,7 +24,6 @@ public class Queue {
 
     public String dequeue() {
         if(isEmpty()){
-            System.out.println("Queue is Empty");
             return null;
         }else {
             return x[++front];
