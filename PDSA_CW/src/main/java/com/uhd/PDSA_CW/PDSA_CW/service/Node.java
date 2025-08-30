@@ -21,6 +21,9 @@ public class Node {
     public Date getItemExpDate() {
         return itemExpDate;
     }
+    public int getItemQuantity(){
+        return itemQuantity;
+    }
     public Node getNextNode() {
         return nextNode;
     }
