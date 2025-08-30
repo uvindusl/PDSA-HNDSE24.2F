@@ -5,6 +5,8 @@ import java.util.List;
 import com.uhd.PDSA_CW.PDSA_CW.service.LinkedList;
 import com.uhd.PDSA_CW.PDSA_CW.service.Node;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,6 +30,10 @@ public class controller {
         return services.displayGrocery();
     }
 
+
+    @DeleteMapping("/removeexpireditems")
+    public String removeExpiredItems(){return services.removeExpiredItemsHandler();}
+
     @GetMapping("/pantrylists")
     public List<String> displayPantryList() {
         return services.displayPantryList();
@@ -35,5 +41,6 @@ public class controller {
 
     @PostMapping("/insertlists")
     public Node insertByDate(@RequestBody Node node) {return  services.insertByDate(node);}
+
 
 }
