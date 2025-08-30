@@ -23,4 +23,9 @@ public class controller {
     public List<String> displayGroceryList(){
         return services.displayGrocery();
     }
+
+    @GetMapping("/pantrylists")
+    public List<String> displayPantryList() {
+        return services.displayPantryList();
+    }
 }
