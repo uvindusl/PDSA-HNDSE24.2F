@@ -84,27 +84,25 @@ public class LinkedList {
         recivedNode.nextNode = node;
     }
 
-    public void deleteMiddle(Node recivedNode){
-        recivedNode.nextNode = recivedNode.nextNode.nextNode;
-        // this will delete the next value
-    }
+    public void deleteMiddle(Node recivedNode) {
+        // Case 1: Empty list or null node
+        if (head == null || recivedNode == null) return;
 
-    public List<String> getCloseToExpireItems() {
-        List<String> expiringItems = new ArrayList<>();
-        Node current = this.getHead();
-        Date today = new Date();
-
-        while (current != null) {
-            if (current.getItemExpDate().after(today)) {
-                long milliseconds = current.getItemExpDate().getTime() - today.getTime();
-                long daysToExpiry = TimeUnit.DAYS.convert(milliseconds, TimeUnit.MILLISECONDS);
-
-                if (daysToExpiry <= 10) {
-                    expiringItems.add(current.getItemName() + " is expiring in " + daysToExpiry + 1 + " days.");
-                }
-            }
-            current = current.getNextNode();
+        // Case 2: Node to delete is the head
+        if (head == recivedNode) {
+            head = head.nextNode;
+            return;
         }
-        return expiringItems;
+
+        // Case 3: Traverse to find the previous node
+        Node currentNode = head;
+        while (currentNode.nextNode != null && currentNode.nextNode != recivedNode) {
+            currentNode = currentNode.nextNode;
+        }
+
+        // If found, bypass the recivedNode
+        if (currentNode.nextNode == recivedNode) {
+            currentNode.nextNode = recivedNode.nextNode;
+        }
     }
 }

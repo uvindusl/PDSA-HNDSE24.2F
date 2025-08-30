@@ -25,7 +25,7 @@ public class Services {
                 .atStartOfDay(ZoneId.systemDefault()).toInstant());
     }
 
-    public List<String> getItemsCloseToExpire(){
-        return list1.getCloseToExpireItems();
-    }
+//    public List<String> getItemsCloseToExpire(){
+//        return list1.getCloseToExpireItems();
+//    }
 }

@@ -14,9 +14,9 @@ public class controller {
     @Autowired
     private Services services;
 
-    @GetMapping("/expiringitems")
-    public List<String> getItemsCloseToExpire() {
-        return services.getItemsCloseToExpire();
-    }
+//    @GetMapping("/expiringitems")
+//    public List<String> getItemsCloseToExpire() {
+//        return services.getItemsCloseToExpire();
+//    }
     
 }
