@@ -28,6 +28,12 @@ public class controller {
         return services.displayGrocery();
     }
 
+    @GetMapping("/pantrylists")
+    public List<String> displayPantryList() {
+        return services.displayPantryList();
+    }
+
     @PostMapping("/insertlists")
     public Node insertByDate(@RequestBody Node node) {return  services.insertByDate(node);}
+
 }

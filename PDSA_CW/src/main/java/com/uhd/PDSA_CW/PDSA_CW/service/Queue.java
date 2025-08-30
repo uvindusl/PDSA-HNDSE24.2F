@@ -3,18 +3,18 @@ package com.uhd.PDSA_CW.PDSA_CW.service;
 public class Queue {
 
     // Attributes
-    String[] x;
+    GroceryItem[] x;
     int front;
     int rear;
 
     // Constructor
     public Queue () {
-        x = new String[100];
+        x = new GroceryItem[100];
         front = -1;
         rear = -1;
     }
 
-    public void enqueue(String data) {
+    public void enqueue(GroceryItem data) {
         if(isFull()){
             System.out.println("Queue is Full.");
         }else {
@@ -22,7 +22,7 @@ public class Queue {
         }
     }
 
-    public String dequeue() {
+    public GroceryItem dequeue() {
         if(isEmpty()){
             return null;
         }else {
@@ -38,7 +38,7 @@ public class Queue {
         return rear == x.length - 1;
     }
 
-    public String peek() {
+    public GroceryItem peek() {
         return x[front+1];
     }
 
@@ -48,7 +48,7 @@ public class Queue {
         }
     }
 
-    public String getElementAt(int index) {
+    public GroceryItem getElementAt(int index) {
         return x[index];
     }
 
