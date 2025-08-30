@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PantryManager from "./PantryManager";
 import RecipeSuggestions from "./RecipeSuggestions";
 import GroceryList from "./GroceryList";
+import { motion } from "framer-motion";
 
 const TabView = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -25,9 +26,15 @@ const TabView = () => {
           </div>
         ))}
       </div>
-      <div style={{ padding: "20px", border: "1px solid #ccc" }}>
+      <motion.div
+        key={activeTab}
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        exit={{ opacity: 0, x: -50 }}
+        style={{ padding: "20px", border: "1px solid #ccc" }}
+      >
         {content[activeTab]}
-      </div>
+      </motion.div>
     </div>
   );
 };
