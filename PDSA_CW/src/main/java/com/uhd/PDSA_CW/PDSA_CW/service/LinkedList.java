@@ -1,9 +1,6 @@
 package com.uhd.PDSA_CW.PDSA_CW.service;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class LinkedList {
     Node head;
@@ -84,25 +81,9 @@ public class LinkedList {
         recivedNode.nextNode = node;
     }
 
-    public void deleteMiddle(Node recivedNode) {
-        // Case 1: Empty list or null node
-        if (head == null || recivedNode == null) return;
-
-        // Case 2: Node to delete is the head
-        if (head == recivedNode) {
-            head = head.nextNode;
-            return;
-        }
-
-        // Case 3: Traverse to find the previous node
-        Node currentNode = head;
-        while (currentNode.nextNode != null && currentNode.nextNode != recivedNode) {
-            currentNode = currentNode.nextNode;
-        }
-
-        // If found, bypass the recivedNode
-        if (currentNode.nextNode == recivedNode) {
-            currentNode.nextNode = recivedNode.nextNode;
-        }
+    public void deleteMiddle(Node recivedNode){
+        recivedNode.nextNode = recivedNode.nextNode.nextNode;
+        // this will delete the next value
     }
+
 }
