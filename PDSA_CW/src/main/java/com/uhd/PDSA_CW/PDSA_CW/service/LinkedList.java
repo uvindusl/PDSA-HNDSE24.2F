@@ -1,9 +1,17 @@
-package com.uhd.PDSA_CW.PDSA_CW;
+package com.uhd.PDSA_CW.PDSA_CW.service;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class LinkedList {
     Node head;
+
+
+    public Node getHead() {
+        return head;
+    }
 
     public void insertByDate(String name, int quantity, Date expDate) {
         Node node = new Node(name, quantity, expDate);
@@ -97,5 +105,4 @@ public class LinkedList {
             currentNode.nextNode = recivedNode.nextNode;
         }
     }
-
 }
