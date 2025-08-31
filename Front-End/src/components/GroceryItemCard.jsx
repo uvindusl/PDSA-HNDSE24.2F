@@ -1,5 +1,7 @@
 import { div } from "motion/react-client";
 import "../styles/PantryItemCard.css";
+import MinusBtn from "./MinusBtn";
+import DeleteBtn from "./DeleteBtn";
 
 function GroceryItemCard(props) {
   const { name, quantity } = props;
@@ -12,6 +14,12 @@ function GroceryItemCard(props) {
           <b>Quantity</b>
         </p>
         <p>{quantity}</p>
+      </div>
+      <div ClassName="pantry-item-card-minesbtn">
+        <MinusBtn />
+      </div>
+      <div ClassName="pantry-item-card-Deletbtn">
+        <DeleteBtn />
       </div>
     </div>
   );
