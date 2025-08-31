@@ -179,59 +179,61 @@ public class Services {
 
     public List<ReciepeCard> matchItemsWithReciepe(List<String> closeToExpireEngridients){
 
-        System.out.println(closeToExpireEngridients);
-        List<ReciepeCard> matchedDishes = new ArrayList<>();
-        try(CSVReader reader = new CSVReader(new FileReader(csvFilePath))){
-            String[] line;
-            boolean firstRow = true;
-            while((line = reader.readNext()) != null){
-                if(firstRow){
-                    firstRow = false;
-                    continue;
+        if(!closeToExpireEngridients.isEmpty()){
+            System.out.println(closeToExpireEngridients);
+            List<ReciepeCard> matchedDishes = new ArrayList<>();
+            try(CSVReader reader = new CSVReader(new FileReader(csvFilePath))){
+                String[] line;
+                boolean firstRow = true;
+                while((line = reader.readNext()) != null){
+                    if(firstRow){
+                        firstRow = false;
+                        continue;
+                    }
+
+                    String dishName = line[0];
+                    String ingredients = line[1].toLowerCase();
+                    String timeWillTake = line[2];
+                    String difficultyLevel = line[3];
+
+                    String[] ingredientsArray = ingredients.split(",");
+
+                    // Convert array to List<String>
+                    List<String> ingredientsList = new ArrayList<>(Arrays.asList(ingredientsArray));
+
+                    //remove leading/trailing spaces from each ingredient
+                    for (int i = 0; i < ingredientsList.size(); i++) {
+                        ingredientsList.set(i, ingredientsList.get(i).trim());
+                    }
+
+
+
+                    boolean allmatch = closeToExpireEngridients.stream()
+                            .allMatch(ingredients::contains);
+
+                    if(allmatch){
+                        List<String> pantryList = pantryList();
+                        List<String> difference = new ArrayList<>(ingredientsList); // copy list2
+                        difference.removeAll(pantryList);
+
+
+                        matchedDishes.add(new ReciepeCard(dishName, difficultyLevel, ingredients, timeWillTake, difference));
+
+                    }
+
                 }
-
-                String dishName = line[0];
-                String ingredients = line[1].toLowerCase();
-                String timeWillTake = line[2];
-                String difficultyLevel = line[3];
-
-                String[] ingredientsArray = ingredients.split(",");
-
-                // Convert array to List<String>
-                List<String> ingredientsList = new ArrayList<>(Arrays.asList(ingredientsArray));
-
-                //remove leading/trailing spaces from each ingredient
-                for (int i = 0; i < ingredientsList.size(); i++) {
-                    ingredientsList.set(i, ingredientsList.get(i).trim());
-                }
-
-
-
-                boolean allmatch = closeToExpireEngridients.stream()
-                        .allMatch(ingredients::contains);
-
-                if(allmatch){
-                    List<String> pantryList = pantryList();
-                    List<String> difference = new ArrayList<>(ingredientsList); // copy list2
-                    difference.removeAll(pantryList);
-
-
-                    matchedDishes.add(new ReciepeCard(dishName, difficultyLevel, ingredients, timeWillTake, difference));
-
-                }
-
+            }catch (IOException | CsvValidationException e){
+                e.printStackTrace();
             }
-        }catch (IOException | CsvValidationException e){
-            e.printStackTrace();
-        }
-        if (matchedDishes.isEmpty()){
-            System.out.println("No dishes");
+            if (matchedDishes.isEmpty()){
+                System.out.println("No dishes");
+            }else{
+                System.out.println("Mtching dishes");
+                return matchedDishes;
+            }
         }else{
-            System.out.println("Mtching dishes");
-            return matchedDishes;
+            System.out.println("no data available");
         }
-
-
         return null;
     }
     public List<ReciepeCard> matchDishesHandler(){
