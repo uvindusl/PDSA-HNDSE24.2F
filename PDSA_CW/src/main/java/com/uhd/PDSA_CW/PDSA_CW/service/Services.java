@@ -24,6 +24,7 @@ public class Services {
         list1.displayValues();
         addItemToGroceryList("milk", 2);
         addItemToGroceryList("nice", 3);
+
         queue.display();
     }
 
@@ -81,9 +82,41 @@ public class Services {
         return items;
     }
 
+    public String removeExpiredItems(LinkedList list) {
+
+        Node current = list.head;
+        Date today = new Date();
+
+
+        while (current != null) {
+            if (current.getItemExpDate().before(today)) {
+                list1.deleteBeg();
+                System.out.println("After deleting");
+
+                String itemName = current.getItemName();
+
+                return itemName + "   deleted";
+
+            }else{
+                System.out.println("no data deleted");
+            }
+            current = current.getNextNode();
+            return null;
+
+
+
+        }
+        return null;
+    }
+    public String removeExpiredItemsHandler() {
+        return removeExpiredItems(list1);
+    }
+
+
     public Node insertByDate(Node node) {
         list1.insertByDate(node.getItemName(), node.getItemQuantity(), node.getItemExpDate());
         return node;
     }
+
 
 }
