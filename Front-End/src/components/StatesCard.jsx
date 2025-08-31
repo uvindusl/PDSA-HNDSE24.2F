@@ -1,10 +1,13 @@
 import "../styles/StatesCard.css";
+import { Box } from "lucide-react";
 
-function StatesCard() {
+function StatesCard(props) {
+  const { name, count } = props;
   return (
     <div className="card">
-      <p>Pantry items</p>
-      <p>10</p>
+      <Box />
+      <p>{props.name}</p>
+      <p>{props.count}</p>
     </div>
   );
 }
