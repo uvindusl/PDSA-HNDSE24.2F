@@ -140,4 +140,5 @@ public class LinkedList {
             currentNode.nextNode = currentNode.nextNode.nextNode;
         }
     }
+
 }
