@@ -1,7 +1,5 @@
 package com.uhd.PDSA_CW.PDSA_CW;
 
-
-import com.uhd.PDSA_CW.PDSA_CW.service.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -20,7 +18,6 @@ public class PdsaCwApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PdsaCwApplication.class, args);
- 		LinkedList list1 = new LinkedList();
  //		list1.insertBeg(10);
  //		list1.insertBeg(20);
  //		list1.insertBeg(30);
