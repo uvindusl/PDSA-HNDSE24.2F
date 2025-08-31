@@ -152,6 +152,7 @@ function GroceryList() {
             quantity={item.quantity}
             isFirstItem={index === 0}
             handelDelete={() => handelDelete()}
+            // onReduceQuantity={() => handleReduceQuantity(item.name)}
           />
         ))}
       </div>

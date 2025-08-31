@@ -15,9 +15,6 @@ function GroceryItemCard(props) {
         </p>
         <p>{quantity}</p>
       </div>
-      <div ClassName="pantry-item-card-minesbtn">
-        <MinusBtn />
-      </div>
       {isFirstItem && (
         <div className="pantry-item-card-Deletbtn">
           <DeleteBtn onClick={handelDelete} />
