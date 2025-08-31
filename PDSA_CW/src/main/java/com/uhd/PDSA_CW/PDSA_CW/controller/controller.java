@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
 import com.uhd.PDSA_CW.PDSA_CW.service.Services;
 
 
@@ -63,4 +65,13 @@ public class controller {
     }
 
 
+    @PutMapping("/reducequantity")
+    public void reduceQuantity(@RequestParam String itemName){
+        services.reduceQuantity(itemName);
+    }
+
+    @DeleteMapping("/removegrocerry")
+    public void removeFromGrocerryList(){
+        services.removeFromGrocerryList();
+    }
 }
