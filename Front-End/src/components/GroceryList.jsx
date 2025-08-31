@@ -78,18 +78,49 @@ function GroceryList() {
     }
   };
 
-  const handelDelete = async () => {
+  const handelDelete = async (item) => {
+    const expDate = prompt("Please enter the expiration date (YYYY-MM-DD):");
+
+    if (!expDate) {
+      alert("Item not added to pantry. Expiration date is required.");
+      return;
+    }
+
+    const jsonData = {
+      itemName: item.name,
+      quantity: item.quantity,
+      itemExpDate: expDate,
+    };
+
     try {
-      const response = await fetch("http://localhost:8080/removegrocerry", {
-        method: "DELETE",
+      const responsePantry = await fetch("http://localhost:8080/insertlists", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(jsonData),
       });
 
-      if (!response.ok) {
-        throw new Error("Failed to delete");
+      if (!responsePantry.ok) {
+        throw new Error("Failed to add item to pantry.");
       }
+
+      const responseGrocery = await fetch(
+        `http://localhost:8080/removegrocerry`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!responseGrocery.ok) {
+        throw new Error("Failed to remove item from grocery list.");
+      }
+
+      alert(`${item.name} moved to pantry!`);
+
       fetchData();
     } catch (error) {
-      setError(`error deleteing ${error}`);
+      setError(`Error moving item: ${error}`);
     }
   };
 
@@ -151,7 +182,7 @@ function GroceryList() {
             name={item.name}
             quantity={item.quantity}
             isFirstItem={index === 0}
-            handelDelete={() => handelDelete()}
+            handelDelete={() => handelDelete(item)}
             // onReduceQuantity={() => handleReduceQuantity(item.name)}
           />
         ))}
