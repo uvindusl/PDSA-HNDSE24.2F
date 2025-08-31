@@ -87,7 +87,7 @@ function PantryManager() {
     }
   };
 
-  // useeffect to call fetchdata function
+  // useeffect to call fetchdata and fetchexpiredsooncount functions
 
   useEffect(() => {
     fetchData();
