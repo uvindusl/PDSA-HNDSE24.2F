@@ -3,6 +3,7 @@ import "../styles/PantryItemCard.css";
 
 function PantryItemCard(props) {
   const { name, quantity, formattedDate } = props;
+  console.log(formattedDate);
   return (
     <div className="pantry-item-card">
       <p>Item Name</p>

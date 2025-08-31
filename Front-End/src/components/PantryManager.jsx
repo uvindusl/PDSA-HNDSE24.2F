@@ -66,8 +66,6 @@ function PantryManager() {
         const dateObject = new Date(cleanDateString);
         const formattedDate = dateObject.toDateString();
 
-        console.log(formattedDate);
-
         return {
           name,
           quantity,
@@ -136,7 +134,7 @@ function PantryManager() {
             key={index}
             name={item.name}
             quantity={item.quantity}
-            daysLeft={item.formattedDate}
+            formattedDate={item.formattedDate}
           />
         ))}
       </div>
