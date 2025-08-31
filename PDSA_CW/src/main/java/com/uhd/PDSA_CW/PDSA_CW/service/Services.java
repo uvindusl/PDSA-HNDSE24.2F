@@ -30,12 +30,6 @@ public class Services {
         list1.insertByDate("onion", 93, toDate(2025, 9, 05));
         list1.insertByDate("sour cream", 5, toDate(2025, 9, 06));
         list1.displayValues();
-
-
-
-
-        
-
         addItemToGroceryList("milk", 2);
         addItemToGroceryList("nice", 3);
 
@@ -95,6 +89,47 @@ public class Services {
 
         return items;
     }
+
+    public List<String> displayOptimizedGrocery() {
+        // Use LinkedHashMap to keep insertion order
+        java.util.Map<String, Integer> aggregated = new java.util.LinkedHashMap<>();
+
+        // Loop through queue
+        for (int i = queue.front + 1; i <= queue.rear; i++) {
+            GroceryItem item = queue.getElementAt(i);
+            if (item == null) continue;
+
+            // Normalize: ignore case + trim spaces
+            String key = item.getName().trim().toLowerCase();
+
+            // Add quantity (aggregate duplicates)
+            aggregated.put(key, aggregated.getOrDefault(key, 0) + item.getQty());
+        }
+
+        // Convert back into display list
+        List<String> items = new ArrayList<>();
+        for (java.util.Map.Entry<String, Integer> entry : aggregated.entrySet()) {
+            String displayName = toTitleCase(entry.getKey());
+            items.add("Item: " + displayName + ", Quantity: " + entry.getValue());
+        }
+
+        return items;
+    }
+
+    // helper to make names look nicer: "apple juice" -> "Apple Juice"
+    private String toTitleCase(String s) {
+        if (s == null || s.isEmpty()) return s;
+        String[] parts = s.split("\\s+");
+        StringBuilder sb = new StringBuilder();
+        for (String part : parts) {
+            if (part.isEmpty()) continue;
+            sb.append(Character.toUpperCase(part.charAt(0)));
+            if (part.length() > 1) sb.append(part.substring(1).toLowerCase());
+            sb.append(' ');
+        }
+        return sb.toString().trim();
+    }
+
 
     public String removeExpiredItems(LinkedList list) {
 
@@ -206,6 +241,26 @@ public class Services {
 
 
 
+    public List<String> displayExpiredItems() {
+        List<String> expiredItems = new ArrayList<>();
+        Node current = list1.head;
+        Date today = new Date();
+
+        while (current != null) {
+            if (current.getItemExpDate().before(today)) {
+                // Add to result
+                expiredItems.add("Expired Item: " + current.getItemName() +
+                        ", Quantity: " + current.getItemQuantity() +
+                        " , Exp-Date: " + current.getItemExpDate());
+
+                // Also log into queue for record
+                queue.enqueue(new GroceryItem(current.getItemName(), current.getItemQuantity()));
+            }
+            current = current.getNextNode();
+        }
+
+        return expiredItems;
+    }
 
 
 }

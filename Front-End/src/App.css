@@ -1,0 +1,16 @@
+body {
+  font-family: "Bitter", serif;
+  font-optical-sizing: auto;
+}
+
+p {
+  margin: 0;
+}
+
+div {
+  border-radius: 5px;
+}
+
+form {
+  border-radius: 5px;
+}

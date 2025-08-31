@@ -1,9 +1,9 @@
 import { div } from "motion/react-client";
 import "../styles/PantryItemCard.css";
 
-function PantryItemCard(props) {
-  const { name, quantity, formattedDate } = props;
-  console.log(formattedDate);
+function GroceryItemCard(props) {
+  const { name, quantity } = props;
+
   return (
     <div className="pantry-item-card">
       <p className="pantry-item-card-name">{name}</p>
@@ -13,14 +13,8 @@ function PantryItemCard(props) {
         </p>
         <p>{quantity}</p>
       </div>
-      <div className="pantry-item-card-formattedDate">
-        <p>
-          <b>Expire Date</b>
-        </p>
-        <p>{formattedDate}</p>
-      </div>
     </div>
   );
 }
 
-export default PantryItemCard;
+export default GroceryItemCard;

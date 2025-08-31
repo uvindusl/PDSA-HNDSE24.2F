@@ -1,4 +1,6 @@
 .tab-container {
+  margin-top: 20px;
   justify-self: center;
-  width: 1000px;
+  /* width: fit-content; */
+  width: 900px;
 }
