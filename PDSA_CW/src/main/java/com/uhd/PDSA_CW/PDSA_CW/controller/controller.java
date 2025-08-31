@@ -6,12 +6,8 @@ import com.uhd.PDSA_CW.PDSA_CW.service.GroceryItem;
 import com.uhd.PDSA_CW.PDSA_CW.service.Node;
 import com.uhd.PDSA_CW.PDSA_CW.service.ReciepeCard;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.uhd.PDSA_CW.PDSA_CW.service.Services;
 
@@ -45,6 +41,9 @@ public class controller {
     @PostMapping("/insertlists")
     public Node insertByDate(@RequestBody Node node) {return  services.insertByDate(node);}
 
+    @DeleteMapping("/deletelistsmid")
+    public Node deleteMiddle(@PathVariable Node recivedNode) {return services.deleteMiddle(recivedNode);}
+
 
     @GetMapping("/match")
     public List<ReciepeCard> matchDishes(){return services.matchDishesHandler();}
@@ -61,6 +60,5 @@ public class controller {
     public List<String> displayExpiredItems() {
         return services.displayExpiredItems();
     }
-
 
 }
