@@ -71,7 +71,7 @@ function StatesBar() {
   }, []);
 
   useEffect(() => {
-    const fetchexpiredSoonCount = async () => {
+    const fetchexpiredCount = async () => {
       try {
         const response = await fetch("http://127.0.0.1:8080/expireditems");
         if (!response.ok) {
@@ -87,7 +87,7 @@ function StatesBar() {
         setLoading(false);
       }
     };
-    fetchexpiredSoonCount();
+    fetchexpiredCount();
   }, []);
 
   return (
