@@ -1,7 +1,9 @@
+import RecipeCard from "./RecipeCard";
+
 function RecipeSuggestions() {
   return (
     <div>
-      <p>asd</p>
+      <RecipeCard />
     </div>
   );
 }

@@ -19,7 +19,7 @@ function PantryManager() {
         </div>
 
         <div>
-          <button>Add Item</button>
+          <button>Add Item to Pantry</button>
         </div>
       </form>
       <div className="pantry-list">
