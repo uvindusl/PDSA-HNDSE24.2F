@@ -6,10 +6,13 @@ function GroceryItemCard(props) {
 
   return (
     <div className="pantry-item-card">
-      <p>Item Name</p>
-      <p>{name}</p>
-      <p>Quantity</p>
-      <p>{quantity}</p>
+      <p className="pantry-item-card-name">{name}</p>
+      <div className="pantry-item-card-quantity">
+        <p>
+          <b>Quantity</b>
+        </p>
+        <p>{quantity}</p>
+      </div>
     </div>
   );
 }

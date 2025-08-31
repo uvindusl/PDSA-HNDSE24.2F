@@ -163,13 +163,10 @@ function PantryManager() {
       {/* ----------------------------------------------------------------------------- */}
 
       <form onSubmit={handleAddPantryItem} className="add-item-form">
+        <h4>Add Item to Pantry</h4>
         <div className="form-content">
-          <div>
+          <div className="form-inercontent">
             <label htmlFor="name">Item Name</label> <br />
-            <label htmlFor="qnt">Quantity</label> <br />
-            <label htmlFor="date">Expiry Date</label> <br />
-          </div>
-          <div>
             <input
               id="name"
               type="text"
@@ -177,25 +174,32 @@ function PantryManager() {
               onChange={(e) => setName(e.target.value)}
             />
             <br />
-            <input
-              id="qnt"
-              type="number"
-              value={quantity}
-              onChange={(e) => setQuantity(e.target.value)}
-            />
-            <br />
-            <input
-              id="date"
-              type="Date"
-              value={expDate}
-              onChange={(e) => setExpDate(e.target.value)}
-            />
-            <br />
+            <div className="form-inercontent2">
+              <div>
+                <label htmlFor="qnt">Quantity</label> <br />
+                <input
+                  id="qnt"
+                  type="number"
+                  value={quantity}
+                  onChange={(e) => setQuantity(e.target.value)}
+                />
+                <br />
+              </div>
+              <div>
+                <label htmlFor="date">Expiry Date</label> <br />
+                <input
+                  id="date"
+                  type="Date"
+                  value={expDate}
+                  onChange={(e) => setExpDate(e.target.value)}
+                />
+                <br />
+              </div>
+            </div>
+            <button className="add-pantry-btn" type="submit">
+              Add Item to Pantry
+            </button>
           </div>
-        </div>
-
-        <div>
-          <button type="submit">Add Item to Pantry</button>
         </div>
       </form>
       {/* ----------------------------------------------------------------------------- */}
