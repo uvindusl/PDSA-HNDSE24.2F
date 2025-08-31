@@ -2,7 +2,7 @@ import { div } from "motion/react-client";
 import "../styles/RecipeCard.css";
 
 function RecipeCard(props) {
-  const { recipe } = props;
+  const { recipe, onAddMissing } = props;
 
   if (!recipe) {
     return null;
@@ -33,7 +33,11 @@ function RecipeCard(props) {
         <div className="recipe-card-content-ingredients">
           <p>Missing {missingIngredientsCount} ingredients</p>
           {recipe.missingIngredients.map((ingredient, index) => (
-            <button key={index} htmlFor="" className="ingredient-label">
+            <button
+              key={index}
+              className="ingredient-label"
+              onClick={() => onAddMissing(ingredient.trim())}
+            >
               {ingredient.trim()}
             </button>
           ))}
