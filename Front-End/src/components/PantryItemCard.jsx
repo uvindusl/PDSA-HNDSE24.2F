@@ -21,10 +21,10 @@ function PantryItemCard(props) {
         </p>
         <p>{formattedDate}</p>
       </div>
-      <div ClassName="pantry-item-card-minesbtn">
+      <div className="pantry-item-card-minesbtn">
         <MinusBtn />
       </div>
-      <div ClassName="pantry-item-card-Deletbtn">
+      <div className="pantry-item-card-Deletbtn">
         <DeleteBtn />
       </div>
     </div>

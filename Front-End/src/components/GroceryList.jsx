@@ -135,6 +135,7 @@ function GroceryList() {
             key={index}
             name={item.name}
             quantity={item.quantity}
+            isFirstItem={index === 0}
           />
         ))}
       </div>
