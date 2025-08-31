@@ -1,4 +1,5 @@
-.add-item-form {
+.add-item-form,
+.expired-box {
   border: solid black 1px;
   padding: 10px;
   margin: 10px;
@@ -12,4 +13,8 @@
   border: solid black 1px;
   padding: 10px;
   margin: 10px;
+}
+
+.expired-box {
+  display: none;
 }

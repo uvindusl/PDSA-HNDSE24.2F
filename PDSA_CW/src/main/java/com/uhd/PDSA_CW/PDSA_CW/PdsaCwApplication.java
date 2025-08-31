@@ -11,10 +11,10 @@ import java.util.Date;
 @SpringBootApplication
 public class PdsaCwApplication {
 
-	public static Date toDate(int year, int month, int day) {
-		return Date.from(LocalDate.of(year, month, day)
-				.atStartOfDay(ZoneId.systemDefault()).toInstant());
-	}
+//	public static Date toDate(int year, int month, int day) {
+//		return Date.from(LocalDate.of(year, month, day)
+//				.atStartOfDay(ZoneId.systemDefault()).toInstant());
+//	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(PdsaCwApplication.class, args);
