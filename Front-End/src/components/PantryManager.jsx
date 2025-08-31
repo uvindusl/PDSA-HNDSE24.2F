@@ -183,6 +183,26 @@ function PantryManager() {
     }
   };
 
+  const handleDeletePantryItem = async (itemName) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/delspeci/${itemName}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to delete item");
+      }
+
+      // After a successful deletion, refresh the list
+      fetchData();
+    } catch (error) {
+      setError(`Error deleting item: ${error}`);
+    }
+  };
+
   return (
     <div>
       <div className="expired-box" style={getexpirSoonCount()}>
@@ -289,6 +309,7 @@ function PantryManager() {
             quantity={item.quantity}
             formattedDate={item.formattedDate}
             onReduceQuantity={() => handleReduceQuantity(item.name)}
+            onDelete={() => handleDeletePantryItem(item.name)}
           />
         ))}
       </div>
