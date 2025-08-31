@@ -2,7 +2,9 @@ package com.uhd.PDSA_CW.PDSA_CW.controller;
 
 import java.util.List;
 
+import com.uhd.PDSA_CW.PDSA_CW.service.GroceryItem;
 import com.uhd.PDSA_CW.PDSA_CW.service.Node;
+import com.uhd.PDSA_CW.PDSA_CW.service.ReciepeCard;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -28,7 +30,7 @@ public class controller {
 
     @GetMapping("/grocerylists")
     public List<String> displayGroceryList(){
-        return services.displayGrocery();
+        return services.displayOptimizedGrocery();
     }
 
 
@@ -42,6 +44,23 @@ public class controller {
 
     @PostMapping("/insertlists")
     public Node insertByDate(@RequestBody Node node) {return  services.insertByDate(node);}
+
+
+    @GetMapping("/match")
+    public List<ReciepeCard> matchDishes(){return services.matchDishesHandler();}
+
+  
+    @PostMapping("/addgrocery")
+    public ResponseEntity<String> addGroceryItem(@RequestBody GroceryItem groceryItem) {
+        services.addItemToGroceryList(groceryItem.getName(), groceryItem.getQty());
+        return ResponseEntity.ok("Added grocery item: " + groceryItem.getName()
+                + " (Qty: " + groceryItem.getQty() + ")");
+    }
+
+    @GetMapping("/expireditems")
+    public List<String> displayExpiredItems() {
+        return services.displayExpiredItems();
+    }
 
 
 }
