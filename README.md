@@ -3,6 +3,7 @@
 
 People often forget expiry dates of food items they purchased and, in the meantime, purchasing unnecessary items, leading food waste to be a significant issue in householdings. Hence Zero-waste kitchen assistant is introduced for tracking pantry items’ expiry dates, not only to reduce food waste but also save money and improve household efficiency.
 
+<img width="1280" height="1392" alt="Screenshot 2025-08-31 230807" src="https://github.com/user-attachments/assets/e6a3e6ed-fd1c-45a7-91c9-1f15df215b58" />
 
 ##  Functional Requirements 
 

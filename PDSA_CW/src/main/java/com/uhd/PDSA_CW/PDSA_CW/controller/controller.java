@@ -41,8 +41,8 @@ public class controller {
     @PostMapping("/insertlists")
     public Node insertByDate(@RequestBody Node node) {return  services.insertByDate(node);}
 
-    @DeleteMapping("/deletelistsmid")
-    public Node deleteMiddle(@PathVariable Node recivedNode) {return services.deleteMiddle(recivedNode);}
+    //@DeleteMapping("/deletelistsmid")
+    //public Node deleteMiddle(@PathVariable Node recivedNode) {return services.deleteMiddle(recivedNode);}
 
 
     @GetMapping("/recipes")
