@@ -30,9 +30,12 @@ public class Services {
         list1.insertByDate("beef sirloin", 10, toDate(2025, 9, 04));
         list1.insertByDate("onion", 93, toDate(2025, 9, 05));
         list1.insertByDate("sour cream", 5, toDate(2025, 9, 06));
+//        list1.deleteMiddle(list1.head.nextNode);
         list1.displayValues();
         addItemToGroceryList("milk", 2);
         addItemToGroceryList("nice", 3);
+
+
 
         queue.display();
     }
@@ -166,6 +169,11 @@ public class Services {
     public Node insertByDate(Node node) {
         list1.insertByDate(node.getItemName(), node.getItemQuantity(), node.getItemExpDate());
         return node;
+    }
+
+    public Node deleteMiddle(Node recivedNode){
+        list1.deleteMiddle(recivedNode);
+        return recivedNode;
     }
 
     public List<ReciepeCard> matchItemsWithReciepe(List<String> closeToExpireEngridients){
