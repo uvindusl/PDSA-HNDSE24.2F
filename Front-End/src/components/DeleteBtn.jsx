@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-const DeleteBtn = () => {
+const DeleteBtn = (props) => {
   return (
     <StyledWrapper>
-      <button className="bin-button">
+      <button className="bin-button" onClick={props.onClick}>
         <svg
           className="bin-top"
           viewBox="0 0 39 7"
@@ -31,7 +31,7 @@ const DeleteBtn = () => {
             <path d="M0 0H33V35C33 37.2091 31.2091 39 29 39H4C1.79086 39 0 37.2091 0 35V0Z" />
           </mask>
           <path
-            d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 39.4183 33.4183 43 29 43V35V0H37Z"
+            d="M0 0H33H0ZM37 35C37 39.4183 33.4183 43 29 43H4C-0.418278 43 -4 39.4183 -4 35H4H29H37ZM4 43C-0.418278 43 -4 39.4183 -4 35V0H4V35V43ZM37 0V35C37 37 39.4183 43 29 43V35V0H37Z"
             fill="white"
             mask="url(#path-1-inside-1_8_19)"
           />

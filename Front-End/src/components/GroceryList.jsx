@@ -78,6 +78,21 @@ function GroceryList() {
     }
   };
 
+  const handelDelete = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/removegrocerry", {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete");
+      }
+      fetchData();
+    } catch (error) {
+      setError(`error deleteing ${error}`);
+    }
+  };
+
   const getitemCount = () => {
     if (itemCount > 0) {
       return { display: "flex" };
@@ -136,6 +151,7 @@ function GroceryList() {
             name={item.name}
             quantity={item.quantity}
             isFirstItem={index === 0}
+            handelDelete={() => handelDelete()}
           />
         ))}
       </div>
