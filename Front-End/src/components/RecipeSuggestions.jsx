@@ -42,7 +42,19 @@ function RecipeSuggestions() {
         </p>
         <p>items:</p>
       </div>
-      <RecipeCard />
+      {loading && <p>Loading recipes...</p>}
+      {error && <p>{error}</p>}
+
+      {/* Map through the recipes state and render a RecipeCard for each one */}
+      {!loading && recipes.length === 0 && (
+        <p>No recipes found with expiring items.</p>
+      )}
+      {recipes.map((recipe, index) => (
+        <RecipeCard
+          key={index}
+          recipe={recipe} // Pass the entire recipe object as a prop
+        />
+      ))}
     </div>
   );
 }
