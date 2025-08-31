@@ -1,7 +1,23 @@
 .pantry-item-card {
   border: solid black 1px;
   display: flex;
-  justify-content: space-around;
+
   margin: 2px;
   padding: 5px;
+  align-items: center;
+}
+
+.pantry-item-card-name {
+  padding-left: 20px;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  width: 300px;
+}
+
+.pantry-item-card-quantity {
+  width: 300px;
+}
+
+.pantry-item-card-formattedDate {
+  width: 200px;
 }
