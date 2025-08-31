@@ -9,13 +9,12 @@ function PantryManager() {
 
   const [pantryItemCount, setPantryItemCount] = useState(0);
   const [expirSoonCount, setexpirSoonCount] = useState(0);
-  const [expiredCount, setexpiredCount] = useState(1);
+  const [expiredCount, setexpiredCount] = useState(0);
   const [expiringDaycount, setexpiringDaycount] = useState(0);
 
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [expDate, setExpDate] = useState("");
-
 
   const handleAddPantryItem = async (e) => {
     e.preventDefault();
@@ -49,6 +48,7 @@ function PantryManager() {
       setExpDate("");
 
       fetchData();
+      fetchexpiredSoonCount();
     } catch (error) {
       setError(`error in adding data`);
     }
@@ -87,11 +87,42 @@ function PantryManager() {
     }
   };
 
-  // useeffect to call fetchdata function
+  // useeffect to call fetchdata and fetchexpiredsooncount functions
 
   useEffect(() => {
     fetchData();
+    fetchexpiredSoonCount();
   }, []);
+
+  const fetchexpiredSoonCount = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8080/expiringitems");
+      if (!response.ok) {
+        throw new Error("data fetching failed");
+      }
+      const data = await response.json();
+
+      // Get the count of items
+      setexpirSoonCount(data.length);
+
+      const expiringDays = data.map((itemString) => {
+        const match = itemString.match(/in (\d+) days/);
+        return match ? parseInt(match[1]) : 0;
+      });
+
+      // Finding the maximum number of day
+      if (expiringDays.length > 0) {
+        const maxDays = Math.max(...expiringDays);
+        setexpiringDaycount(maxDays);
+      } else {
+        setexpiringDaycount(0);
+      }
+    } catch (error) {
+      setError("error fetching data");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const getexpirSoonCount = () => {
     if (expirSoonCount > 0 || expiredCount > 0) {
@@ -100,22 +131,38 @@ function PantryManager() {
     return {};
   };
 
+  const handleRemoveExpiredItems = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/removeexpireditems", {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete");
+      }
+
+      fetchData();
+    } catch (error) {
+      setError(`error deleteing ${error}`);
+    }
+  };
+
   return (
     <div>
-
       <div className="expired-box" style={getexpirSoonCount()}>
         <p>
           {expirSoonCount} item(s) expiring within {expiringDaycount} days{" "}
           <br />
           {expiredCount} item(s) expired
-          <button>Remove expired item(s)</button>
+          <button onClick={handleRemoveExpiredItems}>
+            Remove expired item(s)
+          </button>
         </p>
       </div>
 
       {/* ----------------------------------------------------------------------------- */}
 
       <form onSubmit={handleAddPantryItem} className="add-item-form">
-
         <div className="form-content">
           <div>
             <label htmlFor="name">Item Name</label> <br />
