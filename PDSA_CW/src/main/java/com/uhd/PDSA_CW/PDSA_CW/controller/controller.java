@@ -70,4 +70,7 @@ public class controller {
     public void removeFromGrocerryList(){
         services.removeFromGrocerryList();
     }
+
+    @DeleteMapping("/delspeci/{name}")
+    public void deleteByName(@PathVariable String name){services.deleteByName(name);}
 }
