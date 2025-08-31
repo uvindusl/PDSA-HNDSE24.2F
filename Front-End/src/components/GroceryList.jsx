@@ -1,3 +1,4 @@
+import { div } from "motion/react-client";
 import "../styles/PantryManager.css";
 import GroceryItemCard from "./GroceryItemCard";
 import { useState } from "react";
@@ -13,19 +14,20 @@ function GroceryList() {
   };
   return (
     <div>
-      <form action="" className="add-item-form">
+      <form className="add-item-form">
+        <h4>Add Item to Grocery List</h4>
         <div className="form-content">
-          <div>
+          <div className="form-inercontent">
             <label htmlFor="name">Item Name</label> <br />
-            <label htmlFor="qnt">Quantity</label> <br />
-          </div>
-          <div>
             <input id="name" type="text" /> <br />
+            <br />
+            <label htmlFor="qnt">Quantity</label> <br />
             <input id="qnt" type="number" /> <br />
+            <br />
+            <button className="add-pantry-btn" type="submit">
+              Add Item to Grocery List
+            </button>
           </div>
-        </div>
-        <div>
-          <button>Add Item to Grocery List</button>
         </div>
       </form>
       {/* --------------------------------------------------------------------------- */}
