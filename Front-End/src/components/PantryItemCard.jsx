@@ -2,7 +2,7 @@ import { div } from "motion/react-client";
 import "../styles/PantryItemCard.css";
 
 function PantryItemCard(props) {
-  const { name, quantity, expDateString } = props;
+  const { name, quantity, formattedDate } = props;
   return (
     <div className="pantry-item-card">
       <p>Item Name</p>
@@ -10,7 +10,7 @@ function PantryItemCard(props) {
       <p>Quantity</p>
       <p>{quantity}</p>
       <p>Expire Date</p>
-      <p>{expDateString}</p>
+      <p>{formattedDate}</p>
     </div>
   );
 }

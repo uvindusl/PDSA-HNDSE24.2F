@@ -21,12 +21,18 @@ function PantryManager() {
           const name = parts[0].split(":")[1].trim();
           const quantity = parseInt(parts[1].split(":")[1].trim());
           const expDateString = parts[2].split("Exp-Date:")[1].trim();
-          console.log(expDateString);
+
+          // remove IST in date
+          const cleanDateString = expDateString.replace("IST", "").trim();
+          const dateObject = new Date(cleanDateString);
+          const formattedDate = dateObject.toDateString();
+
+          console.log(formattedDate);
 
           return {
             name,
             quantity,
-            expDateString,
+            formattedDate,
           };
         });
         setItemDetails(parsedData);
@@ -69,7 +75,7 @@ function PantryManager() {
             key={index}
             name={item.name}
             quantity={item.quantity}
-            daysLeft={item.expDateString}
+            daysLeft={item.formattedDate}
           />
         ))}
       </div>
