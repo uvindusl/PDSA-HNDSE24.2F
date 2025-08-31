@@ -2,12 +2,31 @@ import RecipeCard from "./RecipeCard";
 import { useEffect, useState } from "react";
 
 function RecipeSuggestions() {
-  const [expirSoonCount, setexpirSoonCount] = useState(1);
-  const [expiringDaycount, setexpiringDaycount] = useState(0);
+  const [expirSoonCount, setExpirSoonCount] = useState(1);
 
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchexpiredSoonCount = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8080/expiringitems");
+        if (!response.ok) {
+          throw new Error("data fetching failed");
+        }
+        const data = await response.json();
+
+        // Get the count of items
+        setExpirSoonCount(data.length);
+      } catch (error) {
+        setError("error fetching data");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchexpiredSoonCount();
+  }, []);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -37,9 +56,7 @@ function RecipeSuggestions() {
   return (
     <div>
       <div className="expire-status" style={getexpirSoonCount()}>
-        <p>
-          {expirSoonCount} item(s) expiring within {expiringDaycount} days
-        </p>
+        <p>{expirSoonCount} item(s) expiring soon...</p>
         <p>items:</p>
       </div>
       {loading && <p>Loading recipes...</p>}
