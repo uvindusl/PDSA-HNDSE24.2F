@@ -8,6 +8,30 @@ function RecipeSuggestions() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const handleAddGroceryItem = async (itemName) => {
+    try {
+      const jsonData = {
+        name: itemName,
+        qty: 1,
+      };
+
+      const response = await fetch("http://127.0.0.1:8080/addgrocery", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(jsonData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to add item to grocery list");
+      }
+      alert(`${itemName} added to grocery list successfully.`);
+    } catch (error) {
+      console.error("Error adding item to grocery list:", error.message);
+    }
+  };
+
   useEffect(() => {
     const fetchexpiredSoonCount = async () => {
       try {
@@ -28,22 +52,22 @@ function RecipeSuggestions() {
     fetchexpiredSoonCount();
   }, []);
 
-  useEffect(() => {
-    const fetchRecipes = async () => {
-      try {
-        const response = await fetch("http://127.0.0.1:8080/recipes");
-        if (!response.ok) {
-          throw new Error("Failed to fetch recipes");
-        }
-        const data = await response.json();
-        setRecipes(data); // Set the fetched data to the state
-      } catch (error) {
-        setError("Error fetching recipes");
-      } finally {
-        setLoading(false);
+  const fetchRecipes = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8080/recipes");
+      if (!response.ok) {
+        throw new Error("Failed to fetch recipes");
       }
-    };
+      const data = await response.json();
+      setRecipes(data);
+    } catch (error) {
+      setError("Error fetching recipes");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchRecipes();
   }, []);
 
@@ -62,14 +86,14 @@ function RecipeSuggestions() {
       {loading && <p>Loading recipes...</p>}
       {error && <p>{error}</p>}
 
-      {/* Map through the recipes state and render a RecipeCard for each one */}
       {!loading && recipes.length === 0 && (
         <p>No recipes found with expiring items.</p>
       )}
       {recipes.map((recipe, index) => (
         <RecipeCard
           key={index}
-          recipe={recipe} // Pass the entire recipe object as a prop
+          recipe={recipe}
+          onAddMissing={handleAddGroceryItem}
         />
       ))}
     </div>
