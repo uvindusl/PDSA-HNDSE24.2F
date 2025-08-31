@@ -190,7 +190,7 @@ public class Services {
                 // Convert array to List<String>
                 List<String> ingredientsList = new ArrayList<>(Arrays.asList(ingredientsArray));
 
-                // Optional: remove leading/trailing spaces from each ingredient
+                //remove leading/trailing spaces from each ingredient
                 for (int i = 0; i < ingredientsList.size(); i++) {
                     ingredientsList.set(i, ingredientsList.get(i).trim());
                 }
@@ -263,4 +263,8 @@ public class Services {
     }
 
 
+    public void reduceQuantity(String itemName){
+        Node current = list1.findByName(itemName);
+        current.itemQuantity = current.itemQuantity - 1;
+    }
 }

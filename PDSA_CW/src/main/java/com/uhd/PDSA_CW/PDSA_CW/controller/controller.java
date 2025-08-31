@@ -6,12 +6,8 @@ import com.uhd.PDSA_CW.PDSA_CW.service.GroceryItem;
 import com.uhd.PDSA_CW.PDSA_CW.service.Node;
 import com.uhd.PDSA_CW.PDSA_CW.service.ReciepeCard;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import com.uhd.PDSA_CW.PDSA_CW.service.Services;
 
@@ -63,4 +59,8 @@ public class controller {
     }
 
 
+    @PostMapping("/reducequantity")
+    public void reduceQuantity(@RequestParam String itemName){
+        services.reduceQuantity(itemName);
+    }
 }

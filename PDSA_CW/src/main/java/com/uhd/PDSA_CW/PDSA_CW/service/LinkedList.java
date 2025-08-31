@@ -103,6 +103,21 @@ public class LinkedList {
             currentNode.nextNode = recivedNode.nextNode;
         }
 
+
+
     }
+    public Node findByName(String name) {
+        Node currentNode = head;
+
+        while (currentNode != null) {
+            if (currentNode.itemName.equalsIgnoreCase(name)) { // case-insensitive match
+                return currentNode;
+            }
+            currentNode = currentNode.nextNode;
+        }
+
+        return null; // not found
+    }
+
 
 }
