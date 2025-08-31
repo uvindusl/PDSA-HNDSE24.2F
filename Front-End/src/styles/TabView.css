@@ -1,4 +1,4 @@
 .tab-container {
   justify-self: center;
-  width: 1000px;
+  width: fit-content;
 }
