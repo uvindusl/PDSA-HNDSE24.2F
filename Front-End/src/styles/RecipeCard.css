@@ -1,0 +1,16 @@
+.recipe-card {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .recipe-card-content {
+  display: flex;
+} */
+
+.recipe-card-content-ingredients {
+  display: flex;
+}
+
+.recipe-card-content-ingredients label {
+  margin: 16px;
+}

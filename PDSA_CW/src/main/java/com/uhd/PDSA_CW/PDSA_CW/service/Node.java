@@ -1,4 +1,4 @@
-package com.uhd.PDSA_CW.PDSA_CW;
+package com.uhd.PDSA_CW.PDSA_CW.service;
 
 import java.util.Date;
 
@@ -13,5 +13,18 @@ public class Node {
         itemQuantity = quantity;
         itemExpDate = expDate;
         nextNode = null;
+    }
+
+    public String getItemName() {
+        return itemName;
+    }
+    public Date getItemExpDate() {
+        return itemExpDate;
+    }
+    public int getItemQuantity(){
+        return itemQuantity;
+    }
+    public Node getNextNode() {
+        return nextNode;
     }
 }

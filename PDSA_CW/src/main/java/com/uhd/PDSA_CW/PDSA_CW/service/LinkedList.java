@@ -1,9 +1,14 @@
-package com.uhd.PDSA_CW.PDSA_CW;
+package com.uhd.PDSA_CW.PDSA_CW.service;
 
 import java.util.Date;
 
 public class LinkedList {
     Node head;
+
+
+    public Node getHead() {
+        return head;
+    }
 
     public void insertByDate(String name, int quantity, Date expDate) {
         Node node = new Node(name, quantity, expDate);
@@ -77,7 +82,27 @@ public class LinkedList {
     }
 
     public void deleteMiddle(Node recivedNode){
-        recivedNode.nextNode = recivedNode.nextNode.nextNode;
-        // this will delete the next value
+        // Case 1: Empty list or null node
+        if(head == null || recivedNode == null)
+            return;
+
+        // Case 1: Empty list or null node
+        if(head == recivedNode){
+            head = head.nextNode;
+            return;
+        }
+
+        // Case 3: Traverse to find the previous node
+        Node currentNode = head;
+        while (currentNode.nextNode != null && currentNode.nextNode != recivedNode){
+            currentNode = currentNode.nextNode;
+        }
+
+        // If found, bypass the recivedNode
+        if(currentNode.nextNode == recivedNode){
+            currentNode.nextNode = recivedNode.nextNode;
+        }
+
     }
+
 }
