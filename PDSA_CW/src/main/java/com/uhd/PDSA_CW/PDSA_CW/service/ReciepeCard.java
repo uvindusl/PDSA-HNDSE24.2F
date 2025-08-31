@@ -20,11 +20,6 @@ public class ReciepeCard {
         this.missingIngredients = missingIngredients;
     }
 
-
-
-
-
-
     public String getReciepeName() {
         return reciepeName;
     }

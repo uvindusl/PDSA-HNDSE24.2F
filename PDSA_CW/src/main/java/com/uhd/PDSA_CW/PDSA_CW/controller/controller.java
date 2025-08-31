@@ -30,7 +30,7 @@ public class controller {
 
     @GetMapping("/grocerylists")
     public List<String> displayGroceryList(){
-        return services.displayOptimizedGrocery();
+        return services.displayGrocery();
     }
 
 
