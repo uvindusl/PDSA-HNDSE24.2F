@@ -48,6 +48,7 @@ function PantryManager() {
       setExpDate("");
 
       fetchData();
+      fetchexpiredSoonCount();
     } catch (error) {
       setError(`error in adding data`);
     }
@@ -90,7 +91,38 @@ function PantryManager() {
 
   useEffect(() => {
     fetchData();
+    fetchexpiredSoonCount();
   }, []);
+
+  const fetchexpiredSoonCount = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8080/expiringitems");
+      if (!response.ok) {
+        throw new Error("data fetching failed");
+      }
+      const data = await response.json();
+
+      // Get the count of items
+      setexpirSoonCount(data.length);
+
+      const expiringDays = data.map((itemString) => {
+        const match = itemString.match(/in (\d+) days/);
+        return match ? parseInt(match[1]) : 0;
+      });
+
+      // Finding the maximum number of day
+      if (expiringDays.length > 0) {
+        const maxDays = Math.max(...expiringDays);
+        setexpiringDaycount(maxDays);
+      } else {
+        setexpiringDaycount(0);
+      }
+    } catch (error) {
+      setError("error fetching data");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const getexpirSoonCount = () => {
     if (expirSoonCount > 0 || expiredCount > 0) {
