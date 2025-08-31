@@ -1,7 +1,19 @@
 .card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   border: solid black 1px;
   width: 200px;
-  padding: 20px;
+  padding: 10px;
   margin: 10px;
   border-radius: 10px;
+}
+
+.count {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 10px;
 }
