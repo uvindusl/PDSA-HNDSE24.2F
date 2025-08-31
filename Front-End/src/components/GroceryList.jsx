@@ -4,7 +4,7 @@ import GroceryItemCard from "./GroceryItemCard";
 import { useState, useEffect } from "react";
 
 function GroceryList() {
-  const [itemCount, setitemCount] = useState(1);
+  const [itemCount, setitemCount] = useState(0);
 
   const [groceryDetails, setGroceryDetails] = useState([]);
   const [loading, setLoading] = useState(true);
