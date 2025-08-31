@@ -14,17 +14,36 @@
   margin: 10px;
 }
 
+.recipe-card-name {
+  padding-left: 20px;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  width: 200px;
+}
+
 /* .recipe-card-content {
   display: flex;
 } */
 
 .recipe-card-content-ingredients {
   display: flex;
+  margin: 10px;
+  padding: 5px;
+  background-color: rgb(238, 238, 238);
 }
 
-/* .recipe-card-content-ingredients label {
-  margin: 16px;
-} */
+.recipe-card-content-ingredients label {
+  margin: 5px;
+  background-color: #ffffff;
+  border: black solid 1px;
+}
+
+.recipe-card-content-ingredients button {
+  margin: 5px;
+  background-color: #ffffff;
+  border: black solid 1px;
+  cursor: pointer;
+}
 
 .ingredient-label {
   margin-right: 8px;

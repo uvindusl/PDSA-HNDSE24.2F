@@ -21,8 +21,9 @@ public class Services {
 
     private LinkedList list1;
     private Queue queue;
-    // private String csvFilePath = "C:\\Users\\USER\\Documents\\Campus Documents\\HNDSE\\PDSA\\CW\\PDSA-HNDSE24.2F\\PDSA_CW\\src\\main\\java\\com\\uhd\\PDSA_CW\\PDSA_CW\\Datasets\\realistic_recipes_final.csv";
-    private String csvFilePath = "/home/uvindu/Documents/PDSA/CW/PDSA-HNDSE24.2F/PDSA_CW/src/main/java/com/uhd/PDSA_CW/PDSA_CW/Datasets/realistic_recipes_final.csv";
+     //private String csvFilePath = "C:\\Users\\USER\\Documents\\Campus Documents\\HNDSE\\PDSA\\CW\\PDSA-HNDSE24.2F\\PDSA_CW\\src\\main\\java\\com\\uhd\\PDSA_CW\\PDSA_CW\\Datasets\\realistic_recipes_final.csv";
+    //private String csvFilePath = "/home/uvindu/Documents/PDSA/CW/PDSA-HNDSE24.2F/PDSA_CW/src/main/java/com/uhd/PDSA_CW/PDSA_CW/Datasets/realistic_recipes_final.csv";
+    private String csvFilePath = "src/main/java/com/uhd/PDSA_CW/PDSA_CW/Datasets/realistic_recipes_final.csv";
 
     public Services() {
         this.list1 = new LinkedList();
@@ -30,9 +31,12 @@ public class Services {
         list1.insertByDate("beef sirloin", 10, toDate(2025, 9, 04));
         list1.insertByDate("onion", 93, toDate(2025, 9, 05));
         list1.insertByDate("sour cream", 5, toDate(2025, 9, 06));
+//        list1.deleteMiddle(list1.head.nextNode);
         list1.displayValues();
         addItemToGroceryList("milk", 2);
         addItemToGroceryList("nice", 3);
+
+
 
         queue.display();
     }
@@ -166,6 +170,11 @@ public class Services {
     public Node insertByDate(Node node) {
         list1.insertByDate(node.getItemName(), node.getItemQuantity(), node.getItemExpDate());
         return node;
+    }
+
+    public Node deleteMiddle(Node recivedNode){
+        list1.deleteMiddle(recivedNode);
+        return recivedNode;
     }
 
     public List<ReciepeCard> matchItemsWithReciepe(List<String> closeToExpireEngridients){
