@@ -10,6 +10,9 @@ function GroceryList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const [name, setName] = useState("");
+  const [qty, setQty] = useState(0);
+
   const fetchData = async () => {
     try {
       const response = await fetch("http://127.0.0.1:8080/grocerylists");
@@ -43,6 +46,38 @@ function GroceryList() {
     fetchData();
   }, []);
 
+  const handleAddGroceryItem = async (e) => {
+    e.preventDefault();
+
+    const jsonData = {
+      name: name,
+      qty: parseInt(qty),
+    };
+
+    try {
+      const response = await fetch("http://localhost:8080/addgrocery", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(jsonData),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(
+          `Error in adding data: ${response.status} ${response.statusText} - ${errorText}`
+        );
+      }
+
+      setName("");
+      setQty(0);
+      fetchData();
+    } catch (error) {
+      setError(`error in adding data`);
+    }
+  };
+
   const getitemCount = () => {
     if (itemCount > 0) {
       return { display: "flex" };
@@ -51,15 +86,27 @@ function GroceryList() {
   };
   return (
     <div>
-      <form className="add-item-form">
+      <form className="add-item-form" onSubmit={handleAddGroceryItem}>
         <h4>Add Item to Grocery List</h4>
         <div className="form-content">
           <div className="form-inercontent">
             <label htmlFor="name">Item Name</label> <br />
-            <input id="name" type="text" /> <br />
+            <input
+              id="name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <br />
             <br />
             <label htmlFor="qnt">Quantity</label> <br />
-            <input id="qnt" type="number" /> <br />
+            <input
+              id="qnt"
+              type="number"
+              value={qty}
+              onChange={(e) => setQty(e.target.value)}
+            />
+            <br />
             <br />
             <button className="add-pantry-btn" type="submit">
               Add Item to Grocery List

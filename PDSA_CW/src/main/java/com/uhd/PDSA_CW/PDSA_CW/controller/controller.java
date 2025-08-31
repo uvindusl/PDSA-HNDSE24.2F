@@ -45,7 +45,7 @@ public class controller {
     public Node deleteMiddle(@PathVariable Node recivedNode) {return services.deleteMiddle(recivedNode);}
 
 
-    @GetMapping("/match")
+    @GetMapping("/recipes")
     public List<ReciepeCard> matchDishes(){return services.matchDishesHandler();}
 
   
@@ -61,4 +61,13 @@ public class controller {
         return services.displayExpiredItems();
     }
 
+    @PutMapping("/reducequantity")
+    public void reduceQuantity(@RequestParam String itemName){
+        services.reduceQuantity(itemName);
+    }
+
+    @DeleteMapping("/removegrocerry")
+    public void removeFromGrocerryList(){
+        services.removeFromGrocerryList();
+    }
 }

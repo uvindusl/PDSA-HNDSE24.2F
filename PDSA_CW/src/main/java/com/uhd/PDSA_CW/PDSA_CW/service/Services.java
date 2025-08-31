@@ -9,19 +9,20 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 import com.opencsv.CSVReader;
 
 import com.opencsv.exceptions.CsvValidationException;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class Services {
 
     private LinkedList list1;
     private Queue queue;
-    private String csvFilePath = "C:\\Users\\USER\\Documents\\Campus Documents\\HNDSE\\PDSA\\CW\\PDSA-HNDSE24.2F\\PDSA_CW\\src\\main\\java\\com\\uhd\\PDSA_CW\\PDSA_CW\\Datasets\\realistic_recipes_final.csv";
+    // private String csvFilePath = "C:\\Users\\USER\\Documents\\Campus Documents\\HNDSE\\PDSA\\CW\\PDSA-HNDSE24.2F\\PDSA_CW\\src\\main\\java\\com\\uhd\\PDSA_CW\\PDSA_CW\\Datasets\\realistic_recipes_final.csv";
+    private String csvFilePath = "/home/uvindu/Documents/PDSA/CW/PDSA-HNDSE24.2F/PDSA_CW/src/main/java/com/uhd/PDSA_CW/PDSA_CW/Datasets/realistic_recipes_final.csv";
 
     public Services() {
         this.list1 = new LinkedList();
@@ -198,7 +199,7 @@ public class Services {
                 // Convert array to List<String>
                 List<String> ingredientsList = new ArrayList<>(Arrays.asList(ingredientsArray));
 
-                // Optional: remove leading/trailing spaces from each ingredient
+                //remove leading/trailing spaces from each ingredient
                 for (int i = 0; i < ingredientsList.size(); i++) {
                     ingredientsList.set(i, ingredientsList.get(i).trim());
                 }
@@ -271,4 +272,11 @@ public class Services {
     }
 
 
+    public void reduceQuantity(String itemName){
+        Node current = list1.findByName(itemName);
+        current.itemQuantity = current.itemQuantity - 1;
+    }
+    public void removeFromGrocerryList(){
+        queue.dequeue();
+    }
 }

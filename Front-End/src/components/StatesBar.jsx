@@ -8,6 +8,7 @@ function StatesBar() {
   const [pantryItemCount, setPantryItemCount] = useState(0);
   const [groceryItemCount, setGroceryItemCount] = useState(0);
   const [expirSoonCount, setExpirSoonCount] = useState(0);
+  const [expiredItemCount, setExpiredItemCount] = useState(0);
 
   useEffect(() => {
     const fetchPantryItemCount = async () => {
@@ -69,10 +70,30 @@ function StatesBar() {
     fetchexpiredSoonCount();
   }, []);
 
+  useEffect(() => {
+    const fetchexpiredCount = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:8080/expireditems");
+        if (!response.ok) {
+          throw new Error("data fetching failed");
+        }
+        const data = await response.json();
+
+        // Get the count of items
+        setExpiredItemCount(data.length);
+      } catch (error) {
+        setError("error fetching data");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchexpiredCount();
+  }, []);
+
   return (
     <div className="StatesBar-container">
       <StatesCard name={"Pantry Items"} count={pantryItemCount} />
-      <StatesCard name={"Expired"} count={0} />
+      <StatesCard name={"Expired"} count={expiredItemCount} />
       <StatesCard name={"Expiring Soon"} count={expirSoonCount} />
       <StatesCard name={"Grocery Items"} count={groceryItemCount} />
     </div>

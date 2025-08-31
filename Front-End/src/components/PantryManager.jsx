@@ -49,6 +49,7 @@ function PantryManager() {
 
       fetchData();
       fetchexpiredSoonCount();
+      fetchexpiredCount();
     } catch (error) {
       setError(`error in adding data`);
     }
@@ -92,6 +93,7 @@ function PantryManager() {
   useEffect(() => {
     fetchData();
     fetchexpiredSoonCount();
+    fetchexpiredCount();
   }, []);
 
   const fetchexpiredSoonCount = async () => {
@@ -147,11 +149,28 @@ function PantryManager() {
     }
   };
 
+  const fetchexpiredCount = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8080/expireditems");
+      if (!response.ok) {
+        throw new Error("data fetching failed");
+      }
+      const data = await response.json();
+
+      // Get the count of items
+      setexpiredCount(data.length);
+    } catch (error) {
+      setError("error fetching data");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div>
       <div className="expired-box" style={getexpirSoonCount()}>
         <p>
-          {expirSoonCount} item(s) expiring within {expiringDaycount} days{" "}
+          {expirSoonCount} item(s) expiring soon...
           <br />
           {expiredCount} item(s) expired
           <button onClick={handleRemoveExpiredItems}>

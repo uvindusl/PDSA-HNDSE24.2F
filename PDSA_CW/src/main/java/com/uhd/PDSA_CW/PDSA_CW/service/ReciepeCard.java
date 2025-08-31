@@ -1,6 +1,5 @@
 package com.uhd.PDSA_CW.PDSA_CW.service;
 
-import java.awt.*;
 import java.util.List;
 
 public class ReciepeCard {
@@ -19,11 +18,6 @@ public class ReciepeCard {
         this.time = time;
         this.missingIngredients = missingIngredients;
     }
-
-
-
-
-
 
     public String getReciepeName() {
         return reciepeName;

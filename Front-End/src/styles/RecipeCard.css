@@ -25,3 +25,10 @@
 /* .recipe-card-content-ingredients label {
   margin: 16px;
 } */
+
+.ingredient-label {
+  margin-right: 8px;
+  background-color: #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
