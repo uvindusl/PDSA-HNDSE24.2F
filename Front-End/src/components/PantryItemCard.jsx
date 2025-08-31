@@ -4,8 +4,8 @@ import DeleteBtn from "./DeleteBtn";
 import MinusBtn from "./MinusBtn";
 
 function PantryItemCard(props) {
-  const { name, quantity, formattedDate } = props;
-  console.log(formattedDate);
+  const { name, quantity, formattedDate, onReduceQuantity, onDelete } = props;
+
   return (
     <div className="pantry-item-card">
       <p className="pantry-item-card-name">{name}</p>
@@ -21,11 +21,11 @@ function PantryItemCard(props) {
         </p>
         <p>{formattedDate}</p>
       </div>
-      <div ClassName="pantry-item-card-minesbtn">
-        <MinusBtn />
+      <div className="pantry-item-card-minesbtn">
+        <MinusBtn onClick={onReduceQuantity} />
       </div>
-      <div ClassName="pantry-item-card-Deletbtn">
-        <DeleteBtn />
+      <div className="pantry-item-card-Deletbtn">
+        <DeleteBtn onClick={onDelete} />
       </div>
     </div>
   );

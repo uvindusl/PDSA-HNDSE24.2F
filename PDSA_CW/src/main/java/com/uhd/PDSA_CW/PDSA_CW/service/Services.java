@@ -272,13 +272,17 @@ public class Services {
         return expiredItems;
     }
 
-
     public void reduceQuantity(String itemName){
         Node current = list1.findByName(itemName);
         current.itemQuantity = current.itemQuantity - 1;
     }
+
     public void removeFromGrocerryList(){
         queue.dequeue();
+    }
+
+    public void deleteByName(String name){
+        list1.deleteByName(name);
     }
 
 }
