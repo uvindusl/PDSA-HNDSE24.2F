@@ -6,6 +6,7 @@ function PantryManager() {
   const [itemDetails, setItemDetails] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [pantryItemCount, setPantryItemCount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,6 +16,9 @@ function PantryManager() {
           throw new Error("data fetching failed");
         }
         const data = await response.json();
+
+        //geting count
+        setPantryItemCount(data.length);
 
         const parsedData = data.map((itemString) => {
           const parts = itemString.split(",");
