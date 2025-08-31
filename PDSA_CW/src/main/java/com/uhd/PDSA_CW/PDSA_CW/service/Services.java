@@ -260,12 +260,12 @@ public class Services {
 
         while (current != null) {
             if (current.getItemExpDate().before(today)) {
-                // Add to result
+
                 expiredItems.add("Expired Item: " + current.getItemName() +
                         ", Quantity: " + current.getItemQuantity() +
                         " , Exp-Date: " + current.getItemExpDate());
 
-                // Also log into queue for record
+
                 queue.enqueue(new GroceryItem(current.getItemName(), current.getItemQuantity()));
             }
             current = current.getNextNode();
@@ -286,4 +286,5 @@ public class Services {
     public void deleteByName(String name){
         list1.deleteByName(name);
     }
+
 }

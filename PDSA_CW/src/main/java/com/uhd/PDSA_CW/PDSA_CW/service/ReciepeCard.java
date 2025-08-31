@@ -5,8 +5,6 @@ import java.util.List;
 public class ReciepeCard {
     private String reciepeName;
     private String difficultyLevel;
-    //private int numberOfIngredients;
-    //private int numberOfMissingIngredients;
     private List<String> missingIngredients;
     private String ingredients;
     private String time;
