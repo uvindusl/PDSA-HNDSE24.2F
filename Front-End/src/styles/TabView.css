@@ -1,5 +1,5 @@
 .tab-container {
   justify-self: center;
-  /* width: fit-content; */
-  width: 1000px;
+  width: fit-content;
+  /* width: 1000px; */
 }
