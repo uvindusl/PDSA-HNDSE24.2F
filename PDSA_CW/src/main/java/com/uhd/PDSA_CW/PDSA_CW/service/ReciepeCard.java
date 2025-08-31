@@ -8,15 +8,16 @@ public class ReciepeCard {
     private String difficultyLevel;
     //private int numberOfIngredients;
     //private int numberOfMissingIngredients;
-    //private List<String> missingIngredients;
+    private List<String> missingIngredients;
     private String ingredients;
     private String time;
 
-    public ReciepeCard(String reciepeName, String difficultyLevel, String ingredients, String time) {
+    public ReciepeCard(String reciepeName, String difficultyLevel, String ingredients, String time, List<String> missingIngredients) {
         this.reciepeName = reciepeName;
         this.difficultyLevel = difficultyLevel;
         this.ingredients = ingredients;
         this.time = time;
+        this.missingIngredients = missingIngredients;
     }
 
 
@@ -54,5 +55,13 @@ public class ReciepeCard {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public List<String> getMissingIngredients() {
+        return missingIngredients;
+    }
+
+    public void setMissingIngredients(List<String> missingIngredients) {
+        this.missingIngredients = missingIngredients;
     }
 }

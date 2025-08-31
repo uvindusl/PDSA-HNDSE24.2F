@@ -5,9 +5,12 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
+
 import com.opencsv.CSVReader;
 
 import com.opencsv.exceptions.CsvValidationException;
@@ -23,9 +26,9 @@ public class Services {
     public Services() {
         this.list1 = new LinkedList();
         this.queue = new Queue();
-        list1.insertByDate("chicken thighs", 10, toDate(2025, 9, 04));
+        list1.insertByDate("beef sirloin", 10, toDate(2025, 9, 04));
         list1.insertByDate("onion", 93, toDate(2025, 9, 05));
-        list1.insertByDate("garlic", 5, toDate(2025, 9, 06));
+        list1.insertByDate("sour cream", 5, toDate(2025, 9, 06));
         list1.displayValues();
 
 
@@ -141,16 +144,34 @@ public class Services {
                     firstRow = false;
                     continue;
                 }
+
                 String dishName = line[0];
                 String ingredients = line[1].toLowerCase();
                 String timeWillTake = line[2];
                 String difficultyLevel = line[3];
 
+                String[] ingredientsArray = ingredients.split(",");
+
+                // Convert array to List<String>
+                List<String> ingredientsList = new ArrayList<>(Arrays.asList(ingredientsArray));
+
+                // Optional: remove leading/trailing spaces from each ingredient
+                for (int i = 0; i < ingredientsList.size(); i++) {
+                    ingredientsList.set(i, ingredientsList.get(i).trim());
+                }
+
+
+
                 boolean allmatch = closeToExpireEngridients.stream()
                         .allMatch(ingredients::contains);
 
                 if(allmatch){
-                    matchedDishes.add(new ReciepeCard(dishName, difficultyLevel, ingredients, timeWillTake));
+                    List<String> pantryList = pantryList();
+                    List<String> difference = new ArrayList<>(ingredientsList); // copy list2
+                    difference.removeAll(pantryList);
+
+
+                    matchedDishes.add(new ReciepeCard(dishName, difficultyLevel, ingredients, timeWillTake, difference));
 
                 }
 
@@ -170,6 +191,17 @@ public class Services {
     }
     public List<ReciepeCard> matchDishesHandler(){
         return matchItemsWithReciepe(getItemsCloseToExpire());
+    }
+
+    public List<String> pantryList() {
+        List<String> items = new ArrayList<>();
+        Node node = list1.head;
+        while(node!=null){
+            items.add(node.itemName);
+            node = node.nextNode;
+        }
+
+        return items;
     }
 
 
