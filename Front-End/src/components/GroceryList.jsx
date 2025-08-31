@@ -78,12 +78,12 @@ function GroceryList() {
     }
   };
 
-  const getitemCount = () => {
-    if (itemCount > 0) {
-      return { display: "flex" };
-    }
-    return {};
-  };
+  // const getitemCount = () => {
+  //   if (itemCount > 0) {
+  //     return { display: "flex" };
+  //   }
+  //   return {};
+  // };
   return (
     <div>
       <form className="add-item-form" onSubmit={handleAddGroceryItem}>
@@ -115,13 +115,13 @@ function GroceryList() {
         </div>
       </form>
       {/* --------------------------------------------------------------------------- */}
-      <div className="expired-box" style={getitemCount()}>
+      {/* <div className="expired-box" style={getitemCount()}>
         <p>
           {itemCount} item(s) in the queue
           <br />
           <button>Optimize List</button>
         </p>
-      </div>
+      </div> */}
       {/* -------------------------------------------------------------------------------- */}
       <div className="pantry-list">
         <h4>Grocery List</h4>
