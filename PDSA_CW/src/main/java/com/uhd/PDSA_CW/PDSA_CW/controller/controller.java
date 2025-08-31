@@ -46,7 +46,7 @@ public class controller {
     public Node insertByDate(@RequestBody Node node) {return  services.insertByDate(node);}
 
 
-    @GetMapping("/match")
+    @GetMapping("/recipes")
     public List<ReciepeCard> matchDishes(){return services.matchDishesHandler();}
 
   
