@@ -1,0 +1,101 @@
+DishName,Ingredients,TimeWillTake,DifficultyLevel
+Spaghetti Carbonara,"spaghetti, eggs, pancetta, Parmesan, black pepper, olive oil, garlic",25 min,Bit hard
+Chicken Curry,"chicken thighs, onion, garlic, ginger, tomato, curry powder, coconut milk, cilantro, oil",45 min,Bit hard
+Beef Stroganoff,"beef sirloin, mushrooms, onion, sour cream, beef broth, Dijon mustard, egg noodles, butter",40 min,Bit hard
+Vegetable Stir-Fry,"broccoli, bell pepper, carrot, snap peas, garlic, soy sauce, sesame oil, rice",20 min,Easy
+Grilled Salmon,"salmon fillets, lemon, olive oil, garlic, dill, salt, pepper",18 min,Easy
+Margherita Pizza,"pizza dough, crushed tomatoes, fresh mozzarella, basil, olive oil, salt",30 min,Bit hard
+Caesar Salad,"romaine lettuce, croutons, Parmesan, anchovies, garlic, egg yolk, lemon juice, olive oil, black pepper",15 min,Easy
+Lamb Biryani,"basmati rice, lamb, onion, yogurt, tomatoes, biryani masala, saffron, ghee, cilantro",90 min,Hard
+Shrimp Scampi,"shrimp, garlic, butter, white wine, lemon, parsley, spaghetti",25 min,Bit hard
+Ratatouille,"eggplant, zucchini, bell pepper, tomato, onion, garlic, olive oil, thyme",60 min,Bit hard
+Pad Thai,"rice noodles, eggs, shrimp, tofu, tamarind paste, fish sauce, palm sugar, peanuts, bean sprouts, lime",35 min,Bit hard
+Butter Chicken,"chicken, tomato puree, butter, cream, garam masala, ginger, garlic, kasuri methi",60 min,Bit hard
+Tacos al Pastor,"pork shoulder, pineapple, guajillo chiles, achiote paste, onion, cilantro, corn tortillas",120 min,Hard
+Moussaka,"eggplant, ground lamb, tomatoes, onion, bechamel sauce, olive oil, Parmesan",90 min,Hard
+Sushi Rolls,"sushi rice, nori, cucumber, avocado, salmon, rice vinegar, soy sauce, wasabi",60 min,Bit hard
+Clam Chowder,"clams, potatoes, bacon, onion, celery, cream, thyme, butter",45 min,Bit hard
+Falafel Wrap,"dried chickpeas, onion, garlic, parsley, cumin, coriander, pita, tahini sauce",45 min,Bit hard
+Chili con Carne,"ground beef, kidney beans, tomatoes, onion, chili powder, cumin, garlic, beef stock",75 min,Easy
+Egg Fried Rice,"cooked rice, eggs, scallions, peas, carrots, soy sauce, sesame oil",15 min,Easy
+Lasagna,"lasagna noodles, ground beef, ricotta, mozzarella, tomato sauce, Parmesan, onion, garlic",90 min,Hard
+Shakshuka,"eggs, tomatoes, red pepper, onion, garlic, cumin, paprika, olive oil",30 min,Easy
+Pulled Pork Sandwich,"pork shoulder, BBQ sauce, onion, buns, brown sugar, paprika, garlic powder",360 min,Hard
+Ceviche,"white fish, lime juice, red onion, cilantro, chili pepper, tomato, avocado, salt",30 min,Bit hard
+Ramen,"ramen noodles, pork belly, soft-boiled eggs, soy sauce, miso paste, nori, scallions, pork broth",180 min,Hard
+Stuffed Peppers,"bell peppers, ground beef, cooked rice, tomato sauce, onion, garlic, mozzarella",60 min,Easy
+Beef Tacos,"ground beef, taco seasoning, corn tortillas, lettuce, tomato, cheddar, salsa",20 min,Easy
+Gnocchi with Pesto,"potato gnocchi, basil pesto, Parmesan, pine nuts, olive oil",20 min,Easy
+Chicken Alfredo,"fettuccine, chicken breast, heavy cream, butter, Parmesan, garlic, black pepper",30 min,Easy
+Shepherd's Pie,"ground lamb, carrots, peas, onion, beef stock, tomato paste, mashed potatoes, butter",75 min,Bit hard
+Tom Yum Soup,"lemongrass, kaffir lime leaves, galangal, chili, shrimp, mushrooms, fish sauce, lime juice",25 min,Bit hard
+Beef Burgers,"ground beef, burger buns, cheddar, lettuce, tomato, onion, pickles, ketchup",20 min,Easy
+French Onion Soup,"yellow onions, beef broth, butter, thyme, baguette, Gruyere",80 min,Bit hard
+Paella,"bomba rice, chicken, chorizo, shrimp, mussels, saffron, paprika, bell pepper, peas, stock",75 min,Hard
+Chicken Kebab,"chicken thighs, yogurt, garlic, lemon juice, cumin, paprika, olive oil, skewers",45 min,Easy
+Gumbo,"andouille sausage, chicken, okra, flour, oil, celery, onion, bell pepper, chicken stock, file powder",120 min,Hard
+Fish and Chips,"cod fillets, flour, beer, baking powder, potatoes, oil, tartar sauce",45 min,Bit hard
+Quiche Lorraine,"eggs, cream, bacon, Gruyere, pie crust, nutmeg, salt, pepper",60 min,Bit hard
+Couscous Salad,"couscous, cucumber, tomato, parsley, lemon juice, olive oil, chickpeas, feta",20 min,Easy
+Katsu Curry,"chicken cutlet, panko breadcrumbs, Japanese curry roux, rice, onion, carrot, potato, oil",45 min,Bit hard
+Beef Wellington,"beef tenderloin, mushrooms, prosciutto, puff pastry, Dijon mustard, egg yolk",150 min,Hard
+Pho,"beef bones, star anise, cinnamon, rice noodles, thinly sliced beef, onion, ginger, herbs",240 min,Hard
+Enchiladas,"corn tortillas, shredded chicken, enchilada sauce, Monterey Jack, onion, cilantro",45 min,Easy
+Pancakes,"flour, milk, eggs, sugar, baking powder, butter, maple syrup, salt",20 min,Easy
+Omelette,"eggs, cheese, mushrooms, onion, bell pepper, herbs, butter",10 min,Easy
+Risotto,"arborio rice, chicken stock, Parmesan, white wine, onion, butter, olive oil",35 min,Bit hard
+Mac and Cheese,"macaroni, cheddar, milk, butter, flour, breadcrumbs, mustard powder",40 min,Easy
+Chicken Shawarma,"chicken thighs, shawarma spice, garlic, yogurt, pita, tahini, lemon",60 min,Bit hard
+Goulash,"beef chuck, paprika, onion, tomatoes, potatoes, bell pepper, beef stock",120 min,Bit hard
+Stuffed Eggplant,"eggplant, ground beef, onion, tomatoes, cumin, garlic, mozzarella, parsley",60 min,Bit hard
+Poke Bowl,"sushi rice, salmon, soy sauce, sesame oil, avocado, cucumber, seaweed, scallions",20 min,Easy
+Hot and Sour Soup,"mushrooms, tofu, bamboo shoots, egg, vinegar, soy sauce, white pepper, chili oil",25 min,Easy
+Spring Rolls,"rice paper, vermicelli, shrimp, lettuce, mint, cilantro, peanut sauce",30 min,Easy
+Tempura,"shrimp, assorted vegetables, tempura batter, oil, dipping sauce, daikon",30 min,Bit hard
+Bibimbap,"rice, beef bulgogi, spinach, carrots, bean sprouts, gochujang, fried egg, sesame oil",45 min,Bit hard
+Chow Mein,"wheat noodles, chicken, cabbage, carrots, soy sauce, ginger, garlic, scallions",25 min,Easy
+Beef Rendang,"beef, coconut milk, lemongrass, galangal, chilies, turmeric, kaffir lime, spices",180 min,Hard
+Chicken Satay,"chicken, soy sauce, brown sugar, garlic, skewers, peanut sauce, cucumber",35 min,Bit hard
+Hummus with Pita,"chickpeas, tahini, lemon juice, garlic, olive oil, salt, pita bread",15 min,Easy
+Gazpacho,"ripe tomatoes, cucumber, bell pepper, garlic, olive oil, sherry vinegar, stale bread, salt",20 min,Easy
+Fried Chicken,"chicken pieces, buttermilk, flour, paprika, garlic powder, oil, salt, pepper",60 min,Bit hard
+Beef Fajitas,"flank steak, bell peppers, onion, tortillas, lime juice, cumin, chili powder",30 min,Easy
+Pork Schnitzel,"pork cutlets, flour, eggs, breadcrumbs, oil, lemon wedges, salt, pepper",30 min,Easy
+Bulgogi,"beef ribeye, soy sauce, sugar, garlic, sesame oil, Asian pear, scallions, rice",45 min,Bit hard
+Jambalaya,"long grain rice, andouille sausage, chicken, shrimp, tomatoes, bell pepper, celery, onion",70 min,Bit hard
+Vegetable Korma,"mixed vegetables, cashews, yogurt, cream, onion, ginger, garlic, spices",40 min,Bit hard
+Lobster Bisque,"lobster, cream, tomato paste, sherry, butter, carrot, celery, onion",75 min,Hard
+Paneer Butter Masala,"paneer, tomatoes, cream, butter, cashews, garam masala, ginger, garlic",40 min,Bit hard
+Dal Tadka,"yellow lentils, onion, tomato, garlic, cumin seeds, ghee, turmeric, chilies",35 min,Easy
+Aloo Gobi,"potatoes, cauliflower, onion, tomato, turmeric, cumin, cilantro, ginger",35 min,Easy
+Chicken Tikka,"chicken, yogurt, tandoori masala, garlic, ginger, lemon juice, oil",50 min,Bit hard
+Okonomiyaki,"cabbage, flour, eggs, pork belly, okonomiyaki sauce, mayonnaise, bonito flakes",35 min,Bit hard
+Pasta Primavera,"pasta, zucchini, broccoli, peas, cherry tomatoes, Parmesan, olive oil, garlic",25 min,Easy
+Chicken Noodle Soup,"chicken, egg noodles, carrot, celery, onion, garlic, chicken broth, parsley",60 min,Easy
+Burrito,"flour tortilla, rice, black beans, grilled chicken, cheddar, salsa, sour cream",25 min,Easy
+Stuffed Zucchini,"zucchini, ground turkey, onion, garlic, tomato sauce, Parmesan, mozzarella",45 min,Easy
+Frittata,"eggs, spinach, onion, feta, potato, olive oil, salt, pepper",25 min,Easy
+Calamari,"squid rings, flour, oil, lemon, garlic aioli, salt, pepper",20 min,Easy
+Beef Chili,"ground beef, kidney beans, tomatoes, onion, chili powder, cumin, garlic, beef stock",90 min,Bit hard
+Prawn Curry,"prawns, coconut milk, curry leaves, mustard seeds, chilies, turmeric, onion, garlic",30 min,Bit hard
+Steak with Garlic Butter,"steak, butter, garlic, thyme, salt, pepper",20 min,Easy
+Spinach and Ricotta Cannelloni,"cannelloni tubes, spinach, ricotta, marinara sauce, mozzarella, Parmesan",60 min,Bit hard
+Chicken Quesadilla,"flour tortillas, cooked chicken, Monterey Jack, bell peppers, onions, salsa",20 min,Easy
+Miso Soup,"dashi, miso paste, tofu, wakame, scallions",15 min,Easy
+Tandoori Chicken,"chicken, yogurt, tandoori masala, lemon juice, garlic, ginger",60 min,Bit hard
+Fajita Bowl,"rice, grilled chicken, sauteed peppers, onions, avocado, salsa, lime",30 min,Easy
+Kofta Curry,"ground lamb, onion, garam masala, cumin, tomato sauce, yogurt, cilantro",60 min,Bit hard
+Vegetarian Pizza,"pizza dough, tomato sauce, mozzarella, mushrooms, bell pepper, olives, onion",35 min,Bit hard
+Eggplant Parmesan,"eggplant, breadcrumbs, mozzarella, Parmesan, marinara sauce, basil",75 min,Bit hard
+Beef Brisket,"beef brisket, spice rub, onion, BBQ sauce",360 min,Hard
+Lentil Soup,"red lentils, carrot, celery, onion, tomato, cumin, garlic, lemon",45 min,Easy
+Ravioli,"cheese ravioli, marinara sauce, Parmesan, basil, olive oil",20 min,Easy
+Seafood Paella,"bomba rice, shrimp, mussels, squid, saffron, stock, peas, bell pepper",70 min,Hard
+Green Chicken Enchiladas,"corn tortillas, shredded chicken, salsa verde, Monterey Jack, onion, cilantro",50 min,Easy
+Vegetable Soup,"mixed vegetables, vegetable broth, tomatoes, herbs, garlic, onion, small pasta",40 min,Easy
+Greek Salad,"cucumber, tomato, red onion, kalamata olives, feta, oregano, olive oil, lemon",15 min,Easy
+Beef Kebab,"beef cubes, onion, bell pepper, cumin, paprika, olive oil, skewers",35 min,Easy
+Cabbage Rolls,"cabbage leaves, ground beef, rice, tomato sauce, onion, garlic",120 min,Bit hard
+Chicken Pot Pie,"chicken, carrots, peas, onion, cream, butter, pie crust, thyme",75 min,Bit hard
+Pav Bhaji,"potatoes, cauliflower, peas, pav bhaji masala, tomatoes, butter, onion, bread rolls",50 min,Bit hard
+Tabbouleh,"bulgur, parsley, mint, tomato, cucumber, lemon juice, olive oil, salt",25 min,Easy

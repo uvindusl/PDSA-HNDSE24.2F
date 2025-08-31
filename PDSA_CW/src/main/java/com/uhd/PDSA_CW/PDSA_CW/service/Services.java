@@ -1,12 +1,16 @@
 package com.uhd.PDSA_CW.PDSA_CW.service;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import com.opencsv.CSVReader;
 
+import com.opencsv.exceptions.CsvValidationException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,13 +18,14 @@ public class Services {
 
     private LinkedList list1;
     private Queue queue;
+    private String csvFilePath = "C:\\Users\\USER\\Documents\\Campus Documents\\HNDSE\\PDSA\\CW\\PDSA-HNDSE24.2F\\PDSA_CW\\src\\main\\java\\com\\uhd\\PDSA_CW\\PDSA_CW\\Datasets\\realistic_recipes_final.csv";
 
     public Services() {
         this.list1 = new LinkedList();
         this.queue = new Queue();
-        list1.insertByDate("Milk", 10, toDate(2025, 9, 04));
-        list1.insertByDate("Gaslabu", 93, toDate(2025, 9, 05));
-        list1.insertByDate("apple", 5, toDate(2025, 8, 23));
+        list1.insertByDate("chicken thighs", 10, toDate(2025, 9, 04));
+        list1.insertByDate("onion", 93, toDate(2025, 9, 05));
+        list1.insertByDate("garlic", 5, toDate(2025, 9, 06));
         list1.displayValues();
 
 
@@ -50,7 +55,7 @@ public class Services {
                 long daysToExpiry = TimeUnit.DAYS.convert(milliseconds, TimeUnit.MILLISECONDS);
 
                 if (daysToExpiry <= 10) {
-                    expiringItems.add(current.getItemName() + " is expiring in " + daysToExpiry+"days.");
+                    expiringItems.add(current.getItemName());
                 }
             }
             current = current.getNextNode();
@@ -123,6 +128,52 @@ public class Services {
         list1.insertByDate(node.getItemName(), node.getItemQuantity(), node.getItemExpDate());
         return node;
     }
+
+    public List<ReciepeCard> matchItemsWithReciepe(List<String> closeToExpireEngridients){
+
+        System.out.println(closeToExpireEngridients);
+        List<ReciepeCard> matchedDishes = new ArrayList<>();
+        try(CSVReader reader = new CSVReader(new FileReader(csvFilePath))){
+            String[] line;
+            boolean firstRow = true;
+            while((line = reader.readNext()) != null){
+                if(firstRow){
+                    firstRow = false;
+                    continue;
+                }
+                String dishName = line[0];
+                String ingredients = line[1].toLowerCase();
+                String timeWillTake = line[2];
+                String difficultyLevel = line[3];
+
+                boolean allmatch = closeToExpireEngridients.stream()
+                        .allMatch(ingredients::contains);
+
+                if(allmatch){
+                    matchedDishes.add(new ReciepeCard(dishName, difficultyLevel, ingredients, timeWillTake));
+
+                }
+
+            }
+        }catch (IOException | CsvValidationException e){
+            e.printStackTrace();
+        }
+        if (matchedDishes.isEmpty()){
+            System.out.println("No dishes");
+        }else{
+            System.out.println("Mtching dishes");
+            return matchedDishes;
+        }
+
+
+        return null;
+    }
+    public List<ReciepeCard> matchDishesHandler(){
+        return matchItemsWithReciepe(getItemsCloseToExpire());
+    }
+
+
+
 
 
 }
