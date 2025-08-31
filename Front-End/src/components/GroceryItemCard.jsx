@@ -4,7 +4,7 @@ import MinusBtn from "./MinusBtn";
 import DeleteBtn from "./DeleteBtn";
 
 function GroceryItemCard(props) {
-  const { name, quantity } = props;
+  const { name, quantity, isFirstItem, handelDelete } = props;
 
   return (
     <div className="pantry-item-card">
@@ -15,12 +15,11 @@ function GroceryItemCard(props) {
         </p>
         <p>{quantity}</p>
       </div>
-      <div ClassName="pantry-item-card-minesbtn">
-        <MinusBtn />
-      </div>
-      <div ClassName="pantry-item-card-Deletbtn">
-        <DeleteBtn />
-      </div>
+      {isFirstItem && (
+        <div className="pantry-item-card-Deletbtn">
+          <DeleteBtn onClick={handelDelete} />
+        </div>
+      )}
     </div>
   );
 }
