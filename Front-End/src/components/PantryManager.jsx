@@ -8,6 +8,7 @@ function PantryManager() {
   const [error, setError] = useState(null);
   const [pantryItemCount, setPantryItemCount] = useState(0);
   const [expirSoonCount, setexpirSoonCount] = useState(0);
+  const [expiredCount, setexpiredCount] = useState(1);
   const [expiringDaycount, setexpiringDaycount] = useState(0);
 
   useEffect(() => {
@@ -52,7 +53,7 @@ function PantryManager() {
   }, []);
 
   const getexpirSoonCount = () => {
-    if (expirSoonCount > 0) {
+    if (expirSoonCount > 0 || expiredCount > 0) {
       return { display: "flex" };
     }
     return {};
@@ -62,8 +63,10 @@ function PantryManager() {
     <div>
       <div className="expired-box" style={getexpirSoonCount()}>
         <p>
-          {expirSoonCount} items expiring within {expiringDaycount} days
-          <button>Remove expired items</button>
+          {expirSoonCount} item(s) expiring within {expiringDaycount} days{" "}
+          <br />
+          {expiredCount} item(s) expired
+          <button>Remove expired item(s)</button>
         </p>
       </div>
 
