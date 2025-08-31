@@ -18,12 +18,19 @@ public class Services {
     public Services() {
         this.list1 = new LinkedList();
         this.queue = new Queue();
-        list1.insertByDate("Milk", 10, toDate(2090, 4, 4));
-        list1.insertByDate("Gaslabu", 93, toDate(2070, 8, 9));
-        list1.insertByDate("apple", 5, toDate(2025, 8, 31));
+        list1.insertByDate("Milk", 10, toDate(2025, 9, 04));
+        list1.insertByDate("Gaslabu", 93, toDate(2025, 9, 05));
+        list1.insertByDate("apple", 5, toDate(2025, 8, 23));
         list1.displayValues();
-        addItemToGroceryList("milk");
-        addItemToGroceryList("nice");
+
+
+
+
+        
+
+        addItemToGroceryList("milk", 2);
+        addItemToGroceryList("nice", 3);
+
         queue.display();
     }
 
@@ -43,7 +50,7 @@ public class Services {
                 long daysToExpiry = TimeUnit.DAYS.convert(milliseconds, TimeUnit.MILLISECONDS);
 
                 if (daysToExpiry <= 10) {
-                    expiringItems.add(current.getItemName() + " is expiring in " + daysToExpiry + 1 + " days.");
+                    expiringItems.add(current.getItemName() + " is expiring in " + daysToExpiry+"days.");
                 }
             }
             current = current.getNextNode();
@@ -55,22 +62,67 @@ public class Services {
         return getCloseToExpireItems(list1);
     }
 
-    public void addItemToGroceryList(String item) {
-        queue.enqueue(item);
+    public void addItemToGroceryList(String item, int qty) {
+        GroceryItem groceryItem = new GroceryItem(item, qty);
+        queue.enqueue(groceryItem);
     }
 
-    public List<String> displayGrocery() {
+    public List<String> displayPantryList() {
         List<String> items = new ArrayList<>();
-        for(int i = queue.front+1;i<= queue.rear;i++){
-            items.add(queue.x[i]);
+        Node node = list1.head;
+        while(node!=null){
+            items.add("Item: " + node.itemName + ", Quantity: " + node.itemQuantity + " ,Exp-Date:"+ node.itemExpDate);
+            node = node.nextNode;
         }
 
         return items;
     }
 
+    public List<String> displayGrocery() {
+        List<String> items = new ArrayList<>();
+        for(int i = queue.front+1;i<= queue.rear;i++){
+            GroceryItem item = queue.x[i];
+            items.add("Item: " + item.getName() + ", Quantity: " + Integer.toString(item.getQty()));
+        }
+
+        return items;
+    }
+
+    public String removeExpiredItems(LinkedList list) {
+
+        Node current = list.head;
+        Date today = new Date();
+
+
+        while (current != null) {
+            if (current.getItemExpDate().before(today)) {
+                list1.deleteBeg();
+                System.out.println("After deleting");
+
+                String itemName = current.getItemName();
+
+                return itemName + "   deleted";
+
+            }else{
+                System.out.println("no data deleted");
+            }
+            current = current.getNextNode();
+            return null;
+
+
+
+        }
+        return null;
+    }
+    public String removeExpiredItemsHandler() {
+        return removeExpiredItems(list1);
+    }
+
+
     public Node insertByDate(Node node) {
         list1.insertByDate(node.getItemName(), node.getItemQuantity(), node.getItemExpDate());
         return node;
     }
+
 
 }
