@@ -267,4 +267,7 @@ public class Services {
         Node current = list1.findByName(itemName);
         current.itemQuantity = current.itemQuantity - 1;
     }
+    public void removeFromGrocerryList(){
+        queue.dequeue();
+    }
 }

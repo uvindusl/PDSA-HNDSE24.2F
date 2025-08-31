@@ -59,8 +59,13 @@ public class controller {
     }
 
 
-    @PostMapping("/reducequantity")
+    @PutMapping("/reducequantity")
     public void reduceQuantity(@RequestParam String itemName){
         services.reduceQuantity(itemName);
+    }
+
+    @DeleteMapping("/removegrocerry")
+    public void removeFromGrocerryList(){
+        services.removeFromGrocerryList();
     }
 }
