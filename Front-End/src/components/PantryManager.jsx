@@ -7,6 +7,8 @@ function PantryManager() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [pantryItemCount, setPantryItemCount] = useState(0);
+  const [expirSoonCount, setexpirSoonCount] = useState(0);
+  const [expiringDaycount, setexpiringDaycount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,8 +51,24 @@ function PantryManager() {
     fetchData();
   }, []);
 
+  const getexpirSoonCount = () => {
+    if (expirSoonCount > 0) {
+      return { display: "flex" };
+    }
+    return {};
+  };
+
   return (
     <div>
+      <div className="expired-box" style={getexpirSoonCount()}>
+        <p>
+          {expirSoonCount} items expiring within {expiringDaycount} days
+          <button>Remove expired items</button>
+        </p>
+      </div>
+
+      {/* ----------------------------------------------------------------------------- */}
+
       <form action="" className="add-item-form">
         <div className="form-content">
           <div>
@@ -69,6 +87,8 @@ function PantryManager() {
           <button>Add Item to Pantry</button>
         </div>
       </form>
+      {/* ----------------------------------------------------------------------------- */}
+
       <div className="pantry-list">
         <h4>Pantry List</h4>
         {loading && <p>Loading...</p>}
