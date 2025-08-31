@@ -123,7 +123,7 @@ function PantryManager() {
         </div>
 
         <div>
-          <button type="submit">Add Item</button>
+          <button type="submit">Add Item to Pantry</button>
         </div>
       </form>
       <div className="pantry-list">
