@@ -9,13 +9,12 @@ function PantryManager() {
 
   const [pantryItemCount, setPantryItemCount] = useState(0);
   const [expirSoonCount, setexpirSoonCount] = useState(0);
-  const [expiredCount, setexpiredCount] = useState(1);
+  const [expiredCount, setexpiredCount] = useState(0);
   const [expiringDaycount, setexpiringDaycount] = useState(0);
 
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
   const [expDate, setExpDate] = useState("");
-
 
   const handleAddPantryItem = async (e) => {
     e.preventDefault();
@@ -100,22 +99,38 @@ function PantryManager() {
     return {};
   };
 
+  const handleRemoveExpiredItems = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/removeexpireditems", {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete");
+      }
+
+      fetchData();
+    } catch (error) {
+      setError(`error deleteing ${error}`);
+    }
+  };
+
   return (
     <div>
-
       <div className="expired-box" style={getexpirSoonCount()}>
         <p>
           {expirSoonCount} item(s) expiring within {expiringDaycount} days{" "}
           <br />
           {expiredCount} item(s) expired
-          <button>Remove expired item(s)</button>
+          <button onClick={handleRemoveExpiredItems}>
+            Remove expired item(s)
+          </button>
         </p>
       </div>
 
       {/* ----------------------------------------------------------------------------- */}
 
       <form onSubmit={handleAddPantryItem} className="add-item-form">
-
         <div className="form-content">
           <div>
             <label htmlFor="name">Item Name</label> <br />
