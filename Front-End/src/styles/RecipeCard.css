@@ -1,6 +1,24 @@
+.expire-status {
+  border: solid black 1px;
+  padding: 10px;
+  margin: 10px;
+  display: none;
+  flex-direction: column;
+}
+
 .recipe-card {
   display: flex;
   justify-content: space-between;
+  padding: 10px;
+  border: solid black 1px;
+  margin: 10px;
+}
+
+.recipe-card-name {
+  padding-left: 20px;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  width: 200px;
 }
 
 /* .recipe-card-content {
@@ -9,8 +27,35 @@
 
 .recipe-card-content-ingredients {
   display: flex;
+  margin: 10px;
+  padding: 5px;
+  background-color: rgb(238, 238, 238);
 }
 
 .recipe-card-content-ingredients label {
-  margin: 16px;
+  margin: 5px;
+  background-color: #ffffff;
+  border: black solid 1px;
+}
+
+.recipe-card-content-ingredients button {
+  margin: 5px;
+  background-color: #ffffff;
+  border: black solid 1px;
+  cursor: pointer;
+}
+
+#colorButton.clicked {
+  background-color: red;
+  color: white;
+}
+
+.ingredient-label {
+  margin-right: 8px;
+  background-color: #e0e0e0;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.ingredient-label.clicked {
+  color: red;
 }

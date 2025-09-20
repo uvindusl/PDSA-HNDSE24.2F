@@ -3,4 +3,29 @@
   display: flex;
   justify-content: space-around;
   margin: 2px;
+  padding: 5px;
+  align-items: center;
+}
+
+.pantry-item-card-name {
+  padding-left: 20px;
+  font-weight: bolder;
+  font-size: 1.5rem;
+  width: 200px;
+}
+
+.pantry-item-card-quantity {
+  width: 200px;
+}
+
+.pantry-item-card-formattedDate {
+  width: 200px;
+}
+
+.pantry-item-card-minesbtn {
+  width: 100px;
+}
+
+.pantry-item-card-Deletbtn {
+  width: 100px;
 }

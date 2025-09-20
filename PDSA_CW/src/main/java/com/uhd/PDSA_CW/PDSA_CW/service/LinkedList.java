@@ -86,7 +86,7 @@ public class LinkedList {
         if(head == null || recivedNode == null)
             return;
 
-        // Case 1: Empty list or null node
+        // Case 2: head itself is the node to delete
         if(head == recivedNode){
             head = head.nextNode;
             return;
@@ -103,6 +103,42 @@ public class LinkedList {
             currentNode.nextNode = recivedNode.nextNode;
         }
 
+
+
+    }
+    public Node findByName(String name) {
+        Node currentNode = head;
+
+        while (currentNode != null) {
+            if (currentNode.itemName.equalsIgnoreCase(name)) { // case-insensitive match
+                return currentNode;
+            }
+            currentNode = currentNode.nextNode;
+        }
+
+        return null; // not found
+    }
+
+    public void deleteByName(String name) {
+        if (head == null) return;
+
+        // Case 1: head itself is the node to delete
+        if (head.itemName.equalsIgnoreCase(name)) {
+            head = head.nextNode;
+            return;
+        }
+
+        // Case 2: traverse list to find the node
+        Node currentNode = head;
+        while (currentNode.nextNode != null &&
+                !currentNode.nextNode.itemName.equalsIgnoreCase(name)) {
+            currentNode = currentNode.nextNode;
+        }
+
+        // If found, unlink it
+        if (currentNode.nextNode != null) {
+            currentNode.nextNode = currentNode.nextNode.nextNode;
+        }
     }
 
 }

@@ -1,13 +1,25 @@
 import { div } from "motion/react-client";
 import "../styles/PantryItemCard.css";
+import MinusBtn from "./MinusBtn";
+import DeleteBtn from "./DeleteBtn";
 
-function GroceryItemCard() {
+function GroceryItemCard(props) {
+  const { name, quantity, isFirstItem, handelDelete } = props;
+
   return (
     <div className="pantry-item-card">
-      <p>Item Name</p>
-      <p>Milk</p>
-      <p>Quantity</p>
-      <p>7</p>
+      <p className="pantry-item-card-name">{name}</p>
+      <div className="pantry-item-card-quantity">
+        <p>
+          <b>Quantity</b>
+        </p>
+        <p>{quantity}</p>
+      </div>
+      {isFirstItem && (
+        <div className="pantry-item-card-Deletbtn">
+          <DeleteBtn onClick={handelDelete} />
+        </div>
+      )}
     </div>
   );
 }

@@ -1,29 +1,42 @@
 package com.uhd.PDSA_CW.PDSA_CW.service;
 
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import com.opencsv.CSVReader;
+
+import com.opencsv.exceptions.CsvValidationException;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class Services {
 
     private LinkedList list1;
     private Queue queue;
+     //private String csvFilePath = "C:\\Users\\USER\\Documents\\Campus Documents\\HNDSE\\PDSA\\CW\\PDSA-HNDSE24.2F\\PDSA_CW\\src\\main\\java\\com\\uhd\\PDSA_CW\\PDSA_CW\\Datasets\\realistic_recipes_final.csv";
+    private String csvFilePath = "/home/uvindu/Documents/PDSA/CW/PDSA-HNDSE24.2F/PDSA_CW/src/main/java/com/uhd/PDSA_CW/PDSA_CW/Datasets/realistic_recipes_final.csv";
+    // private String csvFilePath = "src/main/java/com/uhd/PDSA_CW/PDSA_CW/Datasets/realistic_recipes_final.csv";
 
     public Services() {
         this.list1 = new LinkedList();
         this.queue = new Queue();
-        list1.insertByDate("Milk", 10, toDate(2025, 9, 4));
-        list1.insertByDate("Gaslabu", 93, toDate(2025, 9, 5));
-        list1.insertByDate("apple", 5, toDate(2025, 8, 31));
+        list1.insertByDate("beef sirloin", 10, toDate(2025, 9, 04));
+        list1.insertByDate("onion", 93, toDate(2025, 9, 05));
+        list1.insertByDate("sour cream", 5, toDate(2025, 9, 06));
+//        list1.deleteMiddle(list1.head.nextNode);
         list1.displayValues();
         addItemToGroceryList("milk", 2);
         addItemToGroceryList("nice", 3);
+
+
 
         queue.display();
     }
@@ -44,7 +57,7 @@ public class Services {
                 long daysToExpiry = TimeUnit.DAYS.convert(milliseconds, TimeUnit.MILLISECONDS);
 
                 if (daysToExpiry <= 10) {
-                    expiringItems.add(current.getItemName() + " is expiring in " + daysToExpiry + " days.");
+                    expiringItems.add(current.getItemName());
                 }
             }
             current = current.getNextNode();
@@ -159,6 +172,87 @@ public class Services {
         return node;
     }
 
+    public Node deleteMiddle(Node recivedNode){
+        list1.deleteMiddle(recivedNode);
+        return recivedNode;
+    }
+
+    public List<ReciepeCard> matchItemsWithReciepe(List<String> closeToExpireEngridients){
+
+        if(!closeToExpireEngridients.isEmpty()){
+            System.out.println(closeToExpireEngridients);
+            List<ReciepeCard> matchedDishes = new ArrayList<>();
+            try(CSVReader reader = new CSVReader(new FileReader(csvFilePath))){
+                String[] line;
+                boolean firstRow = true;
+                while((line = reader.readNext()) != null){
+                    if(firstRow){
+                        firstRow = false;
+                        continue;
+                    }
+
+                    String dishName = line[0];
+                    String ingredients = line[1].toLowerCase();
+                    String timeWillTake = line[2];
+                    String difficultyLevel = line[3];
+
+                    String[] ingredientsArray = ingredients.split(",");
+
+                    // Convert array to List<String>
+                    List<String> ingredientsList = new ArrayList<>(Arrays.asList(ingredientsArray));
+
+                    //remove leading/trailing spaces from each ingredient
+                    for (int i = 0; i < ingredientsList.size(); i++) {
+                        ingredientsList.set(i, ingredientsList.get(i).trim());
+                    }
+
+
+
+                    boolean allmatch = closeToExpireEngridients.stream()
+                            .allMatch(ingredients::contains);
+
+                    if(allmatch){
+                        List<String> pantryList = pantryList();
+                        List<String> difference = new ArrayList<>(ingredientsList); // copy list2
+                        difference.removeAll(pantryList);
+
+
+                        matchedDishes.add(new ReciepeCard(dishName, difficultyLevel, ingredients, timeWillTake, difference));
+
+                    }
+
+                }
+            }catch (IOException | CsvValidationException e){
+                e.printStackTrace();
+            }
+            if (matchedDishes.isEmpty()){
+                System.out.println("No dishes");
+            }else{
+                System.out.println("Mtching dishes");
+                return matchedDishes;
+            }
+        }else{
+            System.out.println("no data available");
+        }
+        return null;
+    }
+    public List<ReciepeCard> matchDishesHandler(){
+        return matchItemsWithReciepe(getItemsCloseToExpire());
+    }
+
+    public List<String> pantryList() {
+        List<String> items = new ArrayList<>();
+        Node node = list1.head;
+        while(node!=null){
+            items.add(node.itemName);
+            node = node.nextNode;
+        }
+
+        return items;
+    }
+
+
+
     public List<String> displayExpiredItems() {
         List<String> expiredItems = new ArrayList<>();
         Node current = list1.head;
@@ -166,12 +260,12 @@ public class Services {
 
         while (current != null) {
             if (current.getItemExpDate().before(today)) {
-                // Add to result
+
                 expiredItems.add("Expired Item: " + current.getItemName() +
                         ", Quantity: " + current.getItemQuantity() +
                         " , Exp-Date: " + current.getItemExpDate());
 
-                // Also log into queue for record
+
                 queue.enqueue(new GroceryItem(current.getItemName(), current.getItemQuantity()));
             }
             current = current.getNextNode();
@@ -180,6 +274,17 @@ public class Services {
         return expiredItems;
     }
 
+    public void reduceQuantity(String itemName){
+        Node current = list1.findByName(itemName);
+        current.itemQuantity = current.itemQuantity - 1;
+    }
 
+    public void removeFromGrocerryList(){
+        queue.dequeue();
+    }
+
+    public void deleteByName(String name){
+        list1.deleteByName(name);
+    }
 
 }
