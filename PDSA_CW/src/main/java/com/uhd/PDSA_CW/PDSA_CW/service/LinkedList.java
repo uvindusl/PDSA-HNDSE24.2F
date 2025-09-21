@@ -86,7 +86,7 @@ public class LinkedList {
         if(head == null || recivedNode == null)
             return;
 
-        // Case 1: Empty list or null node
+        // Case 2: head itself is the node to delete
         if(head == recivedNode){
             head = head.nextNode;
             return;
